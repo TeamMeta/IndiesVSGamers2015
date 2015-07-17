@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacle: {fileID: 190730, guid: 3cea270efce1ad4418d869b59d401038, type: 2}
-  spawnInterval: 3
+  spawnInterval: 6
 --- !u!1 &247436363
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +542,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0}
   jumpVec: {x: 0, y: 20}
   gravity: {x: 0, y: -1}
-  limboSpeed: 50
+  IsLimboing: 0
+  limboSpeed: 100
   Grounded: 0
   info: {fileID: 284276907}
 --- !u!143 &1152963690

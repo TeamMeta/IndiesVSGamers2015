@@ -26,6 +26,7 @@ public class PlayerControl : MonoBehaviour {
 	public Vector2 velocity;
 	public Vector2 jumpVec;
 	public Vector2 gravity;
+	public bool IsLimboing = false;
 
 	//Stuff to make the zombie rotate
 	public float limboSpeed;
@@ -120,7 +121,7 @@ public class PlayerControl : MonoBehaviour {
 			}
 
 			//Can limbo when grounded
-			if(Input.GetKeyDown(KeyCode.DownArrow)){
+			if(Input.GetKeyDown(KeyCode.DownArrow) && !IsLimboing){
 				Debug.Log("DO THE LIMBO");
 				StartCoroutine("DoTheLimbo");
 			}
@@ -142,9 +143,10 @@ public class PlayerControl : MonoBehaviour {
 	IEnumerator DoTheLimbo(){
 		bool movingBack = true;
 		bool movingForward = false;
+		IsLimboing = true;
 		Quaternion deltaRot = Quaternion.RotateTowards(_initialRot, _finalRot, limboSpeed*Time.deltaTime);
 		while(movingBack){
-			Debug.Log("MOVING BACK");
+//			Debug.Log("MOVING BACK");
 			_rotHinge.Rotate(deltaRot.eulerAngles);
 			if(AlmostEquals(_rotHinge.rotation, _finalRot)){
 				movingBack = false;
@@ -154,10 +156,10 @@ public class PlayerControl : MonoBehaviour {
 			yield return null;
 		}
 
-
+		yield return new WaitForSeconds(1.0f);
 
 		while(movingForward){
-			Debug.Log("MOVING FORWARD");
+//			Debug.Log("MOVING FORWARD");
 			Quaternion revDeltaRot = Quaternion.Euler(deltaRot.eulerAngles.x, deltaRot.eulerAngles.y, -deltaRot.eulerAngles.z);
 			_rotHinge.Rotate(revDeltaRot.eulerAngles);
 			if(AlmostEquals(_rotHinge.rotation, _finalRot)){
@@ -167,7 +169,7 @@ public class PlayerControl : MonoBehaviour {
 
 			yield return null;
 		}
-
+		IsLimboing = false;
 
 	}
 
@@ -175,7 +177,7 @@ public class PlayerControl : MonoBehaviour {
 	bool AlmostEquals(Quaternion _one, Quaternion _two){
 		float _oneZ = _one.eulerAngles.z;
 		float _twoZ = _two.eulerAngles.z;
-		Debug.Log("ONE:"+_oneZ+"TWO:"+_twoZ);
+//		Debug.Log("ONE:"+_oneZ+"TWO:"+_twoZ);
 		return ((_oneZ - _twoZ) > 0);
 	}
 }
