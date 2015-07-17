@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class OrganVisualTimer : MonoBehaviour {
 
@@ -12,6 +13,8 @@ public class OrganVisualTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.localScale = new Vector3(1f, 1 - organ.RhythmPercentage(), 1f);
+		if(organ != null) {
+			transform.GetChild(0).GetComponent<Image>().fillAmount = organ.RhythmPercentage();
+		}
 	}
 }
