@@ -17,7 +17,9 @@ namespace PlayerManager{
 public class PlayerStateManager : MonoBehaviour {
 
 
-	private CharacterController _controller;
+
+
+	public CharacterController Controller{ get; private set;}
 	
 	#region MOVEMENT_PARAMS
 	public Vector2 velocity;
@@ -58,7 +60,7 @@ public class PlayerStateManager : MonoBehaviour {
 	void Start(){
 		_rotHinge = transform.parent;
 		_initialRot=_rotHinge.rotation;
-		_controller = GetComponent<CharacterController>();
+		Controller = transform.parent.GetComponent<CharacterController>();
 	}
 
 	// Update is called once per frame
@@ -101,7 +103,7 @@ public class PlayerStateManager : MonoBehaviour {
 		}
 		
 		//Move the character
-		_controller.Move(velocity*Time.deltaTime);
+		Controller.Move(velocity*Time.deltaTime);
 		
 		
 		
@@ -156,7 +158,7 @@ public class PlayerStateManager : MonoBehaviour {
 	//HACK Since character controllers isGrounded sucks
 	private bool _isCharGrounded(){
 		
-		return (transform.position.y < -0.36);
+		return (_rotHinge.position.y < -2.32);
 	}
 	
 	//HACK: co routine for limbo, should be a different state in a FSM

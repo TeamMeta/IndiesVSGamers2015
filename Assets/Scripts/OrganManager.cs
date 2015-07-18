@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class OrganManager : MonoBehaviour {
 
+	public static OrganManager Instance;
 
 	public int difficulty = 0;
 	
@@ -11,7 +12,8 @@ public class OrganManager : MonoBehaviour {
 	private float timeBeforeOrganButtonSwap;
 	private int numOrgansFailed;
 	
-	private List<FailedOrgan> failedOrgans;
+	public List<FailedOrgan> failedOrgans{get; private set;}
+
 	
 	//every time interval the game will decide whether or not to
 	//fail an organ or to swap the controls for an existing failed organ
@@ -21,6 +23,8 @@ public class OrganManager : MonoBehaviour {
 
 
 	void Awake(){
+		Instance = this;
+
 		failedOrgans = new List<FailedOrgan>();
 		timeBeforeOrganFail = Random.Range(3f,10f-difficulty);
 	}
