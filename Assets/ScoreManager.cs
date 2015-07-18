@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using LoginUtilities;
 
 namespace ScoreUtilities
 {
@@ -88,19 +89,19 @@ namespace ScoreUtilities
         }
 
         //Function to update the score in the GameJolt Leader
-        public string UpdateScore(bool isGuest, string guestName)
+        public string UpdateScore()
         {
             int scoreVal = this.CalcVal();
             string scoreText = scoreVal + " miles";
             string extraData = ""; // This will not be shown on the website. You can store any information.
             Debug.Log("Score: "+scoreVal);
-            if (!isGuest)
+            if (LoginManager.isLoggedIn())
             {
                 GameJolt.API.Scores.Add(scoreVal, scoreText, tableID, extraData, addSuccess);
             }
             else
             {
-                GameJolt.API.Scores.Add(scoreVal, scoreText, guestName, tableID, extraData, addSuccess);
+                GameJolt.API.Scores.Add(scoreVal, scoreText, LoginManager.guestName, tableID, extraData, addSuccess);
             }
             return scoreText;
         }
@@ -108,17 +109,20 @@ namespace ScoreUtilities
         private void addSuccess(bool worked)
         {
             Debug.Log(string.Format("Score Add {0}.", worked ? "Successful" : "Failed"));
-            if (bTest)
+            if (worked)
             {
-                PlayerPrefs.DeleteAll();
-            }
-            if (bShowLeaderBoard)
-            {
-                Debug.Log("Calling Leaderboard");
-                GameJolt.UI.Manager.Instance.ShowLeaderboards((bool success) =>
+                if (bTest)
                 {
-                    Debug.Log(string.Format("Leaderboard Call {0}.", success ? "Successful" : "Failed"));
-                });
+                    PlayerPrefs.DeleteAll();
+                }
+                if (bShowLeaderBoard)
+                {
+                    Debug.Log("Calling Leaderboard");
+                    GameJolt.UI.Manager.Instance.ShowLeaderboards((bool success) =>
+                    {
+                        Debug.Log(string.Format("Leaderboard Call {0}.", success ? "Successful" : "Failed"));
+                    });
+                }
             }
         }
     }

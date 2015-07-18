@@ -104,7 +104,7 @@ public class PlayerStateManager : MonoBehaviour {
                 ScoreManager objScore = new ScoreManager();
                 objScore.bTest = true;
                 objScore.bShowLeaderBoard = true;
-                objScore.UpdateScore(false,"");
+                objScore.UpdateScore();
                 StartCoroutine("DoTheLimbo");
 			}
 		}
