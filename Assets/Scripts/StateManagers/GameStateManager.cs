@@ -8,6 +8,7 @@ using GameManager;
 namespace GameManager{
 	//add more states as needed
 	public enum GameState{
+		MainMenu,
 		Paused,
 		Running
 	}
@@ -43,9 +44,9 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	public SimpleStateMachine _stateMachine;
-	private SimpleState paused,running;
+	private SimpleState paused,running, mainMenu;
 
-	public GameObject PauseMenuCanvas; 
+	public GameObject PauseMenuCanvas, MainMenuCanvas, InGameCanvas; 
 
 
 	public void Pause() {
@@ -64,6 +65,7 @@ public class GameStateManager : MonoBehaviour {
 		//Initialize State Machine
 		paused =  new SimpleState(PausedEnter, PausedUpdate, PausedExit, "[GAME-STATE] :  PAUSED");
 		running = new SimpleState(RunningEnter, RunningUpdate, RunningExit, "[GAME-STATE] :  RUNNING");
+		mainMenu = new SimpleState(MainMenuEnter, MainMenuUpdate, MainMenuExit, "[GAME-STATE] : MAINMENU"); 
 
 		//Start the state machine
 		State = GameState.Running;
@@ -113,6 +115,23 @@ public class GameStateManager : MonoBehaviour {
 	}
 	#endregion
 
+	#region MAINMENU_STATE
+	void MainMenuEnter(){
+		Time.timeScale = 1; 
+		PauseMenuCanvas.SetActive(false);
+		MainMenuCanvas.SetActive(false);
+		InGameCanvas.SetActive(true);
+	}
+	
+	void MainMenuUpdate(){
+
+	}
+	
+	void MainMenuExit(){
+		
+	}
+	#endregion
+
 
 	/// <summary>
 	/// Switches Game State 
@@ -129,6 +148,9 @@ public class GameStateManager : MonoBehaviour {
 			break;
 		case GameState.Running:
 			_stateMachine.SwitchStates(running);
+			break;
+		case GameState.MainMenu:
+			_stateMachine.SwitchStates(mainMenu);
 			break;
 		}
 	}
