@@ -241,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c0993e246939b4d92b78a180f71ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenu: 1
   organTimer: {fileID: 0}
   firstOrganFailTime: 3
   secondOrganFailTime: 6
@@ -1327,6 +1328,8 @@ MonoBehaviour:
   _stateMachine:
     currentState: 
   PauseMenuCanvas: {fileID: 1827423682}
+  MainMenuCanvas: {fileID: 0}
+  InGameCanvas: {fileID: 0}
 --- !u!4 &1812536683
 Transform:
   m_ObjectHideFlags: 0
