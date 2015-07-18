@@ -76,4 +76,11 @@ public class OrganManager : MonoBehaviour {
 			failedOrgans[i].HandleOrgan();
 		}
 	}
+
+
+	public void ResetOrgans(){
+		foreach(FailedOrgan organ in failedOrgans){
+			organ.organHealth = 50;
+		}
+	}
 }

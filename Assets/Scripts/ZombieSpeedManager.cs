@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using PlayerManager;
+
 
 /// <summary>
 /// This class is an observer, observers how the organsare doing and sets your distance to the human accordingly.
 /// </summary>
-public class ZombiePowerupManager : MonoBehaviour {
+public class ZombieSpeedManager : MonoBehaviour {
 
-	public static ZombiePowerupManager Instance;
+	public static ZombieSpeedManager Instance;
 
 	//List of available organs
 	private List<FailedOrgan> _organs ;
@@ -15,7 +17,6 @@ public class ZombiePowerupManager : MonoBehaviour {
 
 	//Set in inspector for now, TODO:the overarching GameManager should set these depending on game mode and level.
 	public GameObject zombie;
-	public GameObject human;
 
 	//Base organ health
 	public float baseOrganHealth;
@@ -32,7 +33,6 @@ public class ZombiePowerupManager : MonoBehaviour {
 
 
 	//Calibrate how much to move the zombie closer/farther based on how its initially set in the scene.
-	private float _initialDistance;
 	private Vector3 _initialPosition;
 
 	private Vector2 _dirVector;
@@ -48,56 +48,57 @@ public class ZombiePowerupManager : MonoBehaviour {
 
 	void Start(){
 
-		//Get the initial distance
-		_initialDistance = Vector2.Distance(zombie.transform.position, human.transform.position);
+		//Subscrive to events
+		GameEvents.emitEaten+=OnEaten;
 
-		_initialPosition = zombie.transform.parent.position;
+		_initialPosition = zombie.transform.position;
 
 		//Get list from organ manager
 		_organs = OrganManager.Instance.failedOrgans;
 	}
 
+
 	void Update(){
 
-
-		MoveZombie();
+		//Can move zombie only if he is is in running state
+		if(ZombieStateManager.Instance.State == PlayerState.Running)
+		{
+			MoveZombie();
+		}
 	}
 
+
+	//Handle Zombie movements
 	void MoveZombie(){
 
-		_finalPosition = (Vector2)_initialPosition +  _dirVector * CalculateDistance();
+		_finalPosition = (Vector2)_initialPosition +  _dirVector * DistanceDelta();
 
+
+		//Clamping final position based oncamp points
 		if(_finalPosition.x < lowerClamp.transform.position.x)
 			_finalPosition = ((Vector3)_finalPosition).SetX(lowerClamp.transform.position.x);
 
 		if(_finalPosition.x > upperClamp.transform.position.x)
 			_finalPosition = ((Vector3)_finalPosition).SetX(upperClamp.transform.position.x);
 
-		Vector3 movement = GetPreventOvershootMoveVector(zombie.transform.parent, zombie.transform.parent.position, _finalPosition, moveSpeed);
+		Vector3 movement = Utilities.GetPreventOvershootMoveVector(zombie.transform, zombie.transform.position, _finalPosition, moveSpeed);
 
-	
+		
 
-		PlayerStateManager.Instance.Controller.Move(movement.ZeroZ());
-
-
-
+		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ());
 
 	}
 
-	Vector3 GetPreventOvershootMoveVector(Transform objectToMove, Vector3 initialPosition, Vector3 finalPosition, float moveSpeed){
-		Vector3 moveVector = Vector3.zero;
-		if(!(Vector3.Distance(objectToMove.position.ZeroZ(), finalPosition.ZeroZ()) < 0.1)){
-			moveVector = (finalPosition - initialPosition).normalized * moveSpeed * Time.deltaTime;
-		}
+	//Caculates movement vector, makes sure the movement doesnt overshoot finalposition
 
-		return moveVector;
-	}
 
-	//Calculates the distance the zombie should be placed from the human.
-	float CalculateDistance(){
+	//Calculates the distance the zombie should be placed from the initial position.	
+	float DistanceDelta(){
 
 
 		float totalDelta = 0;
+
+		//Iterate over all failed organs 
 		foreach(FailedOrgan _faledOrgan in _organs){
 			if(_faledOrgan.organHealth != baseOrganHealth){
 				totalDelta += (_faledOrgan.organHealth - baseOrganHealth);
@@ -105,5 +106,9 @@ public class ZombiePowerupManager : MonoBehaviour {
 		}
 
 		return totalDelta * distanceMultiplier;
+	}
+
+	void OnEaten(){
+		OrganManager.Instance.ResetOrgans();
 	}
 }

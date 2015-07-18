@@ -11,8 +11,19 @@ namespace GameManager{
 		Paused,
 		Running
 	}
-}
 
+
+
+}
+public  delegate void GameEvent();
+
+public static class GameEvents{
+	public static event GameEvent emitEaten; 
+
+	public static void emitEatenEvent(){
+		emitEaten();
+	}
+}
 
 /// <summary>
 /// This singleton persists across all scenes and is used to manage the game state overall.
