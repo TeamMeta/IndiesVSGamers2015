@@ -2,85 +2,131 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
+public enum OrganType{
+	Heart = 0,
+	Lungs = 1,
+	Generic = 2, //Placeholder for whatever the last organ is going to be
+	Length
+}
+
 public class OrganManager : MonoBehaviour {
 
 	public static OrganManager Instance;
 
-	public int difficulty = 0;
-	
-	private float timeBeforeOrganFail;
-	private float timeBeforeOrganButtonSwap;
-	private int numOrgansFailed;
-	
-	public List<FailedOrgan> failedOrgans{get; private set;}
 
-	
-	//every time interval the game will decide whether or not to
-	//fail an organ or to swap the controls for an existing failed organ
-	private bool failOrgan = true;
+	//Keeping track of failed organs
+	public Dictionary<OrganType, FailedOrgan> failedOrgans{get; private set;}
+
+	//Keeping track of unfailed organs
+	public Dictionary<OrganType, FailedOrgan> organsToFail{get; private set;}
+
+
+
 	
 	public GameObject organTimer;
 
 
+	//Organ fail times
+	public float firstOrganFailTime;
+	public float secondOrganFailTime;
+	public float thirdOrganFailTime;
+
 	void Awake(){
 		Instance = this;
 
-		failedOrgans = new List<FailedOrgan>();
-		timeBeforeOrganFail = Random.Range(3f,10f-difficulty);
+		failedOrgans = new Dictionary<OrganType, FailedOrgan>();
+		organsToFail = new Dictionary<OrganType, FailedOrgan>();
+
+		//Populate Dictionary
+		organsToFail.Add(OrganType.Heart, new FailedHeart());
+		organsToFail.Add(OrganType.Lungs, new FailedLungs());
+		organsToFail.Add(OrganType.Generic, new FailedOrgan());
 	}
 
 
 	// Use this for initialization
 	void Start () {
+
+		UnityTimer.Instance.CallAfterDelay(() => {
+
+			FailOrgan();
+
+			UnityTimer.Instance.CallAfterDelay(() => {
+
+				FailOrgan();
+
+				UnityTimer.Instance.CallAfterDelay(() => {
+
+					FailOrgan();
+
+				}, thirdOrganFailTime);
+
+			}, secondOrganFailTime);
+
+		}, firstOrganFailTime);
 	
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
-		ManageOrgans();
+
+		UpdateOrgans();
 	}
 
 
-	void ManageOrgans(){
-		timeBeforeOrganFail -= Time.deltaTime;
-		timeBeforeOrganButtonSwap -= Time.deltaTime;
-		if(timeBeforeOrganFail <= 0 && failOrgan) {
-			numOrgansFailed++;
-			FailedOrgan fo = new FailedOrgan();
-			fo.OrganFail();
-			failedOrgans.Add(fo);
-			UIManager.instance.FailOrgan(failedOrgans[numOrgansFailed - 1]);	
-			Debug.Log("An organ failed! Press " + fo.savingControl + " to save the organ.");
-			if(Random.value < 0.25f && numOrgansFailed < 4) {
-				failOrgan = true;
-				timeBeforeOrganFail = Random.Range(10f, 20f-difficulty);
-			} else {
-				failOrgan = false;
-				timeBeforeOrganButtonSwap = Random.Range(20f, 40f-difficulty);
-			}
-		} else if(timeBeforeOrganButtonSwap <= 0 && !failOrgan) {
-			int tempOrgan = Random.Range(0, failedOrgans.Count);
-			KeyCode prevKey = failedOrgans[tempOrgan].savingControl;
-			failedOrgans[tempOrgan].SwapControl();
-			Debug.Log("You no longer have to press " + prevKey + ", press " + failedOrgans[tempOrgan].savingControl + " to save the organ now.");
-			if(Random.value < 0.25f && numOrgansFailed < 4) {
-				failOrgan = true;
-				timeBeforeOrganFail = Random.Range(3f, 10f-difficulty);
-			} else {
-				failOrgan = false;
-				timeBeforeOrganButtonSwap = Random.Range(3f, 10f-difficulty);
-			}
-		}
-		
-		for(int i = 0; i < failedOrgans.Count; i++) {
-			failedOrgans[i].HandleOrgan();
-		}
+
+
+	//Fail the organ of said organ type
+	void FailOrgan(){
+		OrganType organTypeToFail = PickRandomOrgan();
+
+		//Remove from organstoFail
+		FailedOrgan organToFail;
+		organsToFail.TryGetValue(organTypeToFail,out organToFail);
+		organsToFail.Remove(organTypeToFail);
+
+		//Fail the organ
+		organToFail.OrganFail();
+
+		//Add to failed organs so its handled correctly
+		failedOrgans.Add(organTypeToFail, organToFail);
+
+
+		//Show UI
+
+		UIManager.instance.FailOrgan(organToFail);
+
 	}
 
 
+	//Pick a random organ from whatever is left over
+	OrganType PickRandomOrgan(){
+		int upperLimit = organsToFail.Count - 1;
+
+		int organToPick = Random.Range(0, upperLimit);
+
+		OrganType[] leftOverOrgans = new OrganType[organsToFail.Count];
+
+		organsToFail.Keys.CopyTo(leftOverOrgans, 0);
+
+		return leftOverOrgans[organToPick];
+	}
+
+	//Iterate over dictionary to update each organ
+	void UpdateOrgans(){
+
+		foreach(KeyValuePair<OrganType, FailedOrgan> organEntry in failedOrgans){
+			organEntry.Value.HandleOrgan();
+		}
+	}
+
+	//Reset all organs' state
 	public void ResetOrgans(){
-		foreach(FailedOrgan organ in failedOrgans){
-			organ.organHealth = 50;
+		foreach(KeyValuePair<OrganType, FailedOrgan> organEntry in failedOrgans){
+			organEntry.Value.organHealth = 50;
 		}
 	}
 }
