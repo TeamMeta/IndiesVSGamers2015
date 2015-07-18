@@ -664,8 +664,8 @@ GameObject:
   - 4: {fileID: 1152963688}
   - 212: {fileID: 1152963687}
   - 95: {fileID: 1152963686}
-  - 114: {fileID: 1152963689}
   - 143: {fileID: 1152963690}
+  - 114: {fileID: 1152963689}
   m_Layer: 0
   m_Name: zombie_0
   m_TagString: Untagged
@@ -736,18 +736,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1152963685}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd06a73e923c4b7993b5659608d2d0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 78d345f7e484a564b80781f5ebc98e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 0
-  organTimer: {fileID: 136930, guid: a050859e0e4284d7bad6e8e3735e896e, type: 2}
   velocity: {x: 0, y: 0}
-  jumpVec: {x: 0, y: 20}
+  jumpVec: {x: 0, y: 25}
   gravity: {x: 0, y: -1}
   IsLimboing: 0
   limboSpeed: 100
   Grounded: 0
-  info: {fileID: 284276907}
+  State: 0
+  _stateMachine:
+    currentState: 
 --- !u!143 &1152963690
 CharacterController:
   m_ObjectHideFlags: 0
