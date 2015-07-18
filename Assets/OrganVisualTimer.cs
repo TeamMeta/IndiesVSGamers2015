@@ -18,6 +18,8 @@ public class OrganVisualTimer : MonoBehaviour {
 	void Update () {
 		if(organ != null) {
 			flashTimer += Time.deltaTime;
+
+			Debug.Log("ORGAN UPDATE"+organ.RhythmPercentage());
 //			Debug.Log(flashTimer);
 			if(organ.GetType() == typeof(FailedHeart) && !((FailedHeart)organ).onBeat) {
 				Debug.Log((int)(flashTimer*10));

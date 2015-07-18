@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
+
 
 
 /// <summary>
@@ -58,5 +61,17 @@ public static class Utilities  {
 		return (Vector3.Distance(v1, v2) < 0.1);
 	}
 
+	public static List<FailedOrgan> ValuesAsList( Dictionary<OrganType, FailedOrgan> dict ){
+		FailedOrgan[] tempArray =  new FailedOrgan[dict.Count];
+		dict.Values.CopyTo(tempArray, 0);
 
+		List<FailedOrgan> toRet = new List<FailedOrgan>();
+		for(int i=0; i < tempArray.Length; i++){
+			toRet.Add(tempArray[i]);
+		}
+
+		return toRet;
+	}
+
+ 
 }

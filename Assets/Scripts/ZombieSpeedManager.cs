@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using PlayerManager;
@@ -12,7 +12,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 	public static ZombieSpeedManager Instance;
 
 	//List of available organs
-	private List<FailedOrgan> _organs ;
+	private Dictionary<OrganType, FailedOrgan> _organs ;
 
 
 	//Set in inspector for now, TODO:the overarching GameManager should set these depending on game mode and level.
@@ -98,9 +98,10 @@ public class ZombieSpeedManager : MonoBehaviour {
 		float totalDelta = 0;
 
 		//Iterate over all failed organs 
-		foreach(FailedOrgan _faledOrgan in _organs){
-			if(_faledOrgan.organHealth != baseOrganHealth){
-				totalDelta += (_faledOrgan.organHealth - baseOrganHealth);
+		foreach(KeyValuePair<OrganType, FailedOrgan> _failedOrganEntery in _organs){
+			FailedOrgan _failedOrgan = _failedOrganEntery.Value;
+			if(_failedOrgan.organHealth != baseOrganHealth){
+				totalDelta += (_failedOrgan.organHealth - baseOrganHealth);
 			}
 		}
 

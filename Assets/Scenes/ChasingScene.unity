@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0}
-  jumpVec: {x: 0, y: 25}
+  jumpVec: {x: 0, y: 20}
   gravity: {x: 0, y: -1}
   IsGrounded: 0
   returnSpeed: 3
@@ -241,8 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c0993e246939b4d92b78a180f71ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 2
   organTimer: {fileID: 0}
+  firstOrganFailTime: 3
+  secondOrganFailTime: 6
+  thirdOrganFailTime: 9
 --- !u!4 &230460278
 Transform:
   m_ObjectHideFlags: 0
