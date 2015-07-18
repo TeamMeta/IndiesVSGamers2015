@@ -85,11 +85,10 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 		
 
-//		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ());
+		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ().ZeroY());
 
 	}
 
-	//Caculates movement vector, makes sure the movement doesnt overshoot finalposition
 
 
 	//Calculates the distance the zombie should be placed from the initial position.	

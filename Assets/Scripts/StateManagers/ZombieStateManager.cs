@@ -70,11 +70,13 @@ public class ZombieStateManager : MonoBehaviour {
 		eating = new SimpleState(EatingEnter, EatingUpdate, EatingExit, "[PLAYER_STATE] : EATING");
 		resetting = new SimpleState(ResettingEnter, ResettingUpdate, ResettingExit, "[PLAYER_STATE] : RESETTING");
 
-		State = PlayerState.Running;
+
 	}
 
 
 	void Start(){
+		State = PlayerState.Running;
+
 		Controller = GetComponent<CharacterController>();
 
 		_initialPosition = transform.position;
@@ -106,6 +108,7 @@ public class ZombieStateManager : MonoBehaviour {
 	void RunningEnter(){
 		//Set velocity to zero
 		velocity = velocity.ZeroY();
+		Debug.Log("STICK ZOMBIE TO:" + transform.position.SetY(Floor.Instance.FloorLevel));
 
 		//Stick character to floor
 		transform.position = transform.position.SetY(Floor.Instance.FloorLevel);
