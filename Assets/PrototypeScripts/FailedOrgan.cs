@@ -16,7 +16,7 @@ public class FailedOrgan {
 	//how often the player needs to tap the savingControl
 	//default value is 1 per second
 	public float rhythmSpeed = 3;
-	private float rhythmTimer = 0;
+	protected float rhythmTimer = 0;
 
 	//the acceptable time-range in which the player can miss the "rhythm" without major penalty
 	public float acceptableError = 0.1f;
@@ -27,7 +27,7 @@ public class FailedOrgan {
 
 	public float RhythmPercentage() {
 		if(rhythmTimer > 0) {
-			return rhythmTimer/rhythmSpeed;
+			return (rhythmTimer - acceptableError*2f)/rhythmSpeed;
 		} else {
 			return 0;
 		}
@@ -67,6 +67,7 @@ public class FailedOrgan {
 			organHealth -= 5;
 			rhythmTimer = 0;
 			Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
+			quality = -1;
 		}
 		return quality;
 	}
