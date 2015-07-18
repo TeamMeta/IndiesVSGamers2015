@@ -66,8 +66,7 @@ public class FailedOrgan {
 		if(rhythmTimer > (rhythmSpeed + (acceptableError*2))) {
 			organHealth -= 5;
 			rhythmTimer = 0;
-			Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
-			quality = -1;
+			quality = 1;
 		}
 		return quality;
 	}
