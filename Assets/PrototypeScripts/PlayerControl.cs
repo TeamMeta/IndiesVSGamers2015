@@ -66,8 +66,9 @@ public class PlayerControl : MonoBehaviour {
 			FailedOrgan fo = new FailedOrgan();
 			fo.OrganFail();
 			failedOrgans.Add(fo);
-			GameObject temp = (GameObject)GameObject.Instantiate(organTimer, new Vector3(-10f + numOrgansFailed*2f, 4f, 0f), Quaternion.identity);
-			temp.GetComponent<OrganVisualTimer>().organ = failedOrgans[numOrgansFailed-1];
+			//GameObject temp = (GameObject)GameObject.Instantiate(organTimer, new Vector3(-10f + numOrgansFailed*2f, 4f, 0f), Quaternion.identity);
+			//temp.GetComponent<OrganVisualTimer>().organ = failedOrgans[numOrgansFailed-1];
+			UIManager.instance.FailOrgan(failedOrgans[numOrgansFailed-1]);
 			Debug.Log("An organ failed! Press " + fo.savingControl + " to save the organ.");
 			if(Random.value < 0.25f && numOrgansFailed < 4) {
 				failOrgan = true;

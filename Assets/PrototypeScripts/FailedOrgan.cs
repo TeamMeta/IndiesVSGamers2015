@@ -33,6 +33,10 @@ public class FailedOrgan {
 		}
 	}
 
+	public bool WithinTimeRange() {
+		return Mathf.Abs(rhythmTimer - rhythmSpeed) < (acceptableError * 2f);
+	}
+
 	//override this in subclasses to handle the different organ failings
 	//this default implementation handles basic rhythmic tapping and works only for the heart
 	//returns the "quality" of how well the player handled saving the organ
