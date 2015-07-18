@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameID: 79915
   privateKey: 5387902908d30d33b52b4f6556177271
-  timeout: 10
+  timeout: 30
   autoPing: 1
   useCaching: 1
   autoConnect: 0

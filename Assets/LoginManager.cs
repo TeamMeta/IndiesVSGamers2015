@@ -23,12 +23,13 @@ public class LoginManager : MonoBehaviour {
 	
 	}
 
-    public static void Logout()
+    public void Logout()
     {
         var isSignedIn = GameJolt.API.Manager.Instance.CurrentUser != null;
         if (isSignedIn)
         {
             GameJolt.API.Manager.Instance.CurrentUser.SignOut();
+            Debug.Log("Logged Out");
         }
     }  
 }
