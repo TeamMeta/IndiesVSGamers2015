@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using PlayerManager;
+using ScoreUtilities;
 
 namespace PlayerManager{
 	public enum PlayerState{
@@ -46,9 +47,9 @@ public class PlayerStateManager : MonoBehaviour {
 
 	void Awake(){
 		Instance = this;
-
-		//Inirialize states
-		idle = new SimpleState(IdleEnter, IdleUpdate, IdleExit, "[PLAYER_STATE] : IDLE");
+        PlayerPrefs.DeleteAll();
+        //Inirialize states
+        idle = new SimpleState(IdleEnter, IdleUpdate, IdleExit, "[PLAYER_STATE] : IDLE");
 		running = new SimpleState(RunningEnter, RunningUpdate, RunningExit, "[PLAYER_STATE] : RUNNING");
 		ducking = new SimpleState(DuckingEnter, DuckingUpdate, DuckingExit, "[PLAYER_STATE] : DUCKING");
 		jumping = new SimpleState(JumpingEnter, JumpingUpdate, JumpingExit, "[PLAYER_STATE] : JUMPING");
@@ -87,7 +88,11 @@ public class PlayerStateManager : MonoBehaviour {
 			//Can jump only when grounded
 			if(Input.GetKeyDown(KeyCode.UpArrow)){
 				Debug.Log("JUMP PRESSED!!!");
-				velocity+=jumpVec;
+
+                ScoreManager objScore = new ScoreManager();
+                objScore.bTest = true;
+                objScore.setMilesPoint(1);
+                velocity +=jumpVec;
 			}else{
 				//Reset velocities y component
 				velocity.y = 0;
@@ -96,7 +101,11 @@ public class PlayerStateManager : MonoBehaviour {
 			//Can limbo when grounded
 			if(Input.GetKeyDown(KeyCode.DownArrow) && !IsLimboing){
 				Debug.Log("DO THE LIMBO");
-				StartCoroutine("DoTheLimbo");
+                ScoreManager objScore = new ScoreManager();
+                objScore.bTest = true;
+                objScore.bShowLeaderBoard = true;
+                objScore.UpdateScore(false,"");
+                StartCoroutine("DoTheLimbo");
 			}
 		}
 		
