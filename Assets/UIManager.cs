@@ -4,7 +4,7 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour {
 
-	public UIManager instance;
+	public static UIManager instance;
 
 	void Awake() {
 		instance = this;
@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour {
 			if(transform.GetChild(i).GetComponent<CanvasGroup>().alpha == 0) {
 				transform.GetChild(i).GetComponent<CanvasGroup>().alpha = 1;
 				transform.GetChild(i).GetComponent<OrganVisualTimer>().organ = fo;
+				break;
 			}
 		}
 	}
