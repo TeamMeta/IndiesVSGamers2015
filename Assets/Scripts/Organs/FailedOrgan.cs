@@ -147,7 +147,7 @@ public class FailedOrgan {
 		}
 
 		SelectControl();
-		Debug.Log(savingControl);
+//		Debug.Log(savingControl);
 	}
 
 	private void SelectControl() {

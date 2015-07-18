@@ -21,8 +21,6 @@ public class OrganManager : MonoBehaviour {
 	//Keeping track of unfailed organs
 	public Dictionary<OrganType, FailedOrgan> organsToFail{get; private set;}
 
-	public bool mainMenu = true;
-
 	
 	public GameObject organTimer;
 
@@ -46,8 +44,8 @@ public class OrganManager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		if(!mainMenu) {
+	public void Start () {
+		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
 			UnityTimer.Instance.CallAfterDelay(() => {
 
 				FailOrgan();
@@ -73,7 +71,7 @@ public class OrganManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(!mainMenu) {
+		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
 			UpdateOrgans();
 		}
 	}

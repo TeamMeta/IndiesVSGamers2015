@@ -68,7 +68,7 @@ public class GameStateManager : MonoBehaviour {
 		mainMenu = new SimpleState(MainMenuEnter, MainMenuUpdate, MainMenuExit, "[GAME-STATE] : MAINMENU"); 
 
 		//Start the state machine
-		State = GameState.Running;
+		State = GameState.MainMenu;
 	}
 
 	void Update(){
@@ -101,7 +101,12 @@ public class GameStateManager : MonoBehaviour {
 	#region RUNNING_STATE
 	void RunningEnter(){
 		Time.timeScale = 1; 
-		PauseMenuCanvas.SetActive(false); 
+		PauseMenuCanvas.SetActive(false);
+		InGameCanvas.SetActive(true);
+		UnityTimer.Instance.CallAfterDelay(() => {
+			MainMenuCanvas.SetActive(false);
+			OrganManager.Instance.Start();
+		}, 1f);
 	}
 
 	void RunningUpdate(){
@@ -118,9 +123,7 @@ public class GameStateManager : MonoBehaviour {
 	#region MAINMENU_STATE
 	void MainMenuEnter(){
 		Time.timeScale = 1; 
-		PauseMenuCanvas.SetActive(false);
-		MainMenuCanvas.SetActive(false);
-		InGameCanvas.SetActive(true);
+
 	}
 	
 	void MainMenuUpdate(){
