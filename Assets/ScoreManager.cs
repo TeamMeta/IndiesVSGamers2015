@@ -7,7 +7,14 @@ namespace ScoreUtilities
     public class ScoreManager
     {
         //Table ID
-        private int tableID = 82836;
+        private enum TableIDs
+        {
+            MainTable = 82836,
+            TestScoreBoardTable = 83424,
+            ProductionLeaderBoard = 83423
+        }
+
+        private int tableID = (int)TableIDs.TestScoreBoardTable;
         //All weights for score calculation
         private int pwrWght = 2;
         private int normalWght = 1;
