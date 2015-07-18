@@ -6,6 +6,9 @@ public class OrganVisualTimer : MonoBehaviour {
 
 	public FailedOrgan organ;
 
+	//hack-y handling of flashingItems;
+	private float flashTimer;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,10 +17,23 @@ public class OrganVisualTimer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(organ != null) {
-			transform.GetChild(2).GetComponent<RectTransform>().sizeDelta = new Vector2(90f,(int)(90*organ.RhythmPercentage()/5f)*5f);
-//			transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.organHealth/100f);
+			flashTimer += Time.deltaTime;
+//			Debug.Log(flashTimer);
+			if(organ.GetType() == typeof(FailedHeart) && !((FailedHeart)organ).onBeat) {
+				Debug.Log((int)(flashTimer*10));
+				transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+				if((int)(flashTimer*10) % 2 == 0) {
+					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+				} else {
+					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,0);
+				}
+			} else {
+				transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+				transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.RhythmPercentage());
+			}
+//			
 //			transform.GetChild(2).GetComponent<Image>().color = organ.WithinTimeRange() ? Color.green : Color.red;
-			transform.GetChild(3).GetComponent<Text>().text = organ.savingControl.ToString();
+			transform.GetChild(2).GetComponent<Text>().text = organ.savingControl.ToString();
 		}
 	}
 }

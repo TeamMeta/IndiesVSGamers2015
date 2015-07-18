@@ -85,7 +85,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 		
 
-		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ());
+//		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ());
 
 	}
 
