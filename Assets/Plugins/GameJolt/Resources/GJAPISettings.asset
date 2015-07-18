@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9badd6626894dc459f92a91d0bd95fa, type: 3}
   m_Name: GJAPISettings
   m_EditorClassIdentifier: 
-  gameID: 0
-  privateKey: 
+  gameID: 79915
+  privateKey: 5387902908d30d33b52b4f6556177271
   timeout: 10
   autoPing: 1
   useCaching: 1
