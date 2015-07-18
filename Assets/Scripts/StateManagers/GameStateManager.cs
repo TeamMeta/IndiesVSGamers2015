@@ -45,6 +45,12 @@ public class GameStateManager : MonoBehaviour {
 	public SimpleStateMachine _stateMachine;
 	private SimpleState paused,running;
 
+	public GameObject PauseMenuCanvas; 
+
+
+	public void Pause() {
+		State = GameState.Paused;
+	}
 
 	#region MONOBEHAVIOUR_METHODS
 	void Awake(){
@@ -53,6 +59,7 @@ public class GameStateManager : MonoBehaviour {
 
 		//Keep Gameobject persistent across all scenes
 		DontDestroyOnLoad(this.gameObject);
+		// DontDestroyOnLoad(PauseMenuCanvas); 
 
 		//Initialize State Machine
 		paused =  new SimpleState(PausedEnter, PausedUpdate, PausedExit, "[GAME-STATE] :  PAUSED");
@@ -64,32 +71,41 @@ public class GameStateManager : MonoBehaviour {
 
 	void Update(){
 		_stateMachine.Execute();
+
+
 	}
 	#endregion
 
 
 	#region PAUSED_STATE
 	void PausedEnter(){
-
+		Time.timeScale = 0; // stops the update loops
+		PauseMenuCanvas.SetActive(true); 
 	}
 
 	void PausedUpdate(){
-		
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			State = GameState.Running; 
+			// figure out how set timescale back
+		}
 	}
 
 	void PausedExit(){
-		
+
 	}
 	#endregion
 
 
 	#region RUNNING_STATE
 	void RunningEnter(){
-
+		Time.timeScale = 1; 
+		PauseMenuCanvas.SetActive(false); 
 	}
 
 	void RunningUpdate(){
-
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			Pause(); 
+		}
 	}
 
 	void RunningExit(){
