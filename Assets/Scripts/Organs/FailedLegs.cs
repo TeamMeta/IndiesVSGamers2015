@@ -8,7 +8,7 @@ public class FailedLegs : FailedOrgan {
 
 	private float tempTimer, buttonPressTimer1, buttonPressTimer2;
 
-	public override float HandleOrgan ()
+    public override float HandleOrgan ()
 	{
 		tempTimer += Time.deltaTime;
 		rhythmTimer = rhythmSpeed;
@@ -23,9 +23,11 @@ public class FailedLegs : FailedOrgan {
 		if(buttonPressTimer1 != -1 && buttonPressTimer2 != -1) {
 			if(Mathf.Abs(buttonPressTimer1 - buttonPressTimer2) < 0.2f) {
 				organHealth++;
-			} else {
+                onBeat = true;
+            } else {
 				organHealth--;
-			}
+                onBeat = false;
+            }
 			buttonPressTimer1 = -1;
 			buttonPressTimer2 = -1;
 			tempTimer = 0;

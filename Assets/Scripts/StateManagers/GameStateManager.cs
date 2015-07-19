@@ -47,7 +47,7 @@ public class GameStateManager : MonoBehaviour {
 	public SimpleStateMachine _stateMachine;
 	private SimpleState paused,running, mainMenu, ended;
 
-	public GameObject PauseMenuCanvas, MainMenuCanvas, InGameCanvas; 
+	public GameObject PauseMenuCanvas, MainMenuCanvas, InGameCanvas, ScoreCanvas, FinalScoreCanvas; 
 
 
 	public void Pause() {
@@ -151,7 +151,17 @@ public class GameStateManager : MonoBehaviour {
 		//Idle the Zombie so he doesn't move again
 		ZombieStateManager.Instance.State = PlayerManager.PlayerState.Idle;
 
+        FinalScoreCanvas.SetActive(true);
+        FinalScoreManager.Instance.Init();
+        FinalScoreManager.Instance.SetAll((int)ScoreManager.Instance.calculator.GetFinalScore(), ScoreManager.Instance.calculator.getHumanEaterPoint(),
+            (int)ScoreManager.Instance.calculator.getMilesPoint(), ScoreManager.Instance.calculator.getHumanEaterPoint());
         ScoreManager.Instance.calculator.UpdateScore();
+
+        UIManager.instance.CleanUI();
+        ScoreCanvas.SetActive(false);
+        InGameCanvas.SetActive(false);
+        PauseMenuCanvas.SetActive(false);
+        //MainMenuCanvas.SetActive(true);        
     }
 	
 	void EndedUpdate(){

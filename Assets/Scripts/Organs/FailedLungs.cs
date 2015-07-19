@@ -12,15 +12,19 @@ public class FailedLungs : FailedOrgan {
 			rhythmTimer += Time.deltaTime;
 			if(rhythmTimer < rhythmSpeed) {
 				organHealthf += Time.deltaTime;
-			} else {
+                onBeat = true;
+            } else {
 				organHealthf -= Time.deltaTime;
-			}
+                onBeat = false;
+            }
 		} else {
 			if(rhythmTimer > 0) {
 				rhythmTimer -= Time.deltaTime;
-			} else {
+                onBeat = false;
+            } else {
 				organHealthf -= Time.deltaTime;
-			}
+                onBeat = false;
+            }
 		}
 
 		organHealth = (int)organHealthf;

@@ -5,7 +5,6 @@ public class FailedHeart : FailedOrgan {
 
 //	private float onBeatTimer = 0.5f;
 //	private float offBeatTimer = 0.75f;
-	public bool onBeat = true;
 
 	public override float HandleOrgan ()
 	{

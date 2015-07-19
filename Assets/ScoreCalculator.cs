@@ -101,6 +101,15 @@ namespace ScoreUtilities
             this.setMilesPoint(mPT);
         }
 
+        //Clean All data for next use
+        public void CleanData()
+        {
+            this.setComboGenerator(1);
+            this.setButtonMashPoint(0);
+            this.setHumanEaterPoint(1);
+            this.setMilesPoint(0);
+        }
+
         //Function to calculate score 
         public float CalcVal()
         {
@@ -137,6 +146,7 @@ namespace ScoreUtilities
             Debug.Log(string.Format("Score Add {0}.", worked ? "Successful" : "Failed"));
             if (worked)
             {
+                CleanData();
                 if (bTest)
                 {
                     PlayerPrefs.DeleteAll();
