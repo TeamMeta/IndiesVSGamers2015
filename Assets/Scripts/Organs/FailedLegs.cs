@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FailedLegs : FailedOrgan {
 
@@ -55,15 +56,30 @@ public class FailedLegs : FailedOrgan {
 		int tempRnd = UnityEngine.Random.Range(0,keys.Length-1);
 		string tempSelectedControl = keys[tempRnd];
 		string tempSelectedControl2 = keys[tempRnd+1];
-		while(FailedOrgan.alreadyMappedKeys.Contains(tempSelectedControl) || alreadyMappedKeys.Contains(tempSelectedControl2)) {
+		while(this.alreadyMappedKeys.Contains(tempSelectedControl) || alreadyMappedKeys.Contains(tempSelectedControl2)) {
 			tempRnd = UnityEngine.Random.Range(0,keys.Length-1);
 			tempSelectedControl = keys[tempRnd];
 			tempSelectedControl2 = keys[tempRnd+1];
 		}
-		FailedOrgan.alreadyMappedKeys.Add(tempSelectedControl);
-		FailedOrgan.alreadyMappedKeys.Add(tempSelectedControl2);
+		this.alreadyMappedKeys.Add(tempSelectedControl);
+		this.alreadyMappedKeys.Add(tempSelectedControl2);
 		savingControl = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl, true);
 		firstKey = savingControl;
 		otherKey = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl2, true);
 	}
+
+	protected override string[] SetAptKeys ()
+	{
+		List<String> keysList = new List<string>();
+
+		keysList.Add("y");
+        keysList.Add("u");
+		keysList.Add("i");
+		keysList.Add("o");
+		keysList.Add("p");
+
+
+        return keysList.ToArray();
+        
+    }
 }

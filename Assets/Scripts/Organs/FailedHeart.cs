@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class FailedHeart : FailedOrgan {
 
@@ -58,5 +60,17 @@ public class FailedHeart : FailedOrgan {
 		}
 		return quality;
 	}
-	
+
+	protected override string[] SetAptKeys ()
+	{
+		List<string> keysList = new List<string>();
+		
+		keysList.Add("q");
+		keysList.Add("w");
+		keysList.Add("e");
+		keysList.Add("r");
+
+        return keysList.ToArray();
+    }
+    
 }

@@ -211,6 +211,9 @@ public class OrganManager : MonoBehaviour {
 			HealOrgan(OrganType.Legs, legs);
 
 
+		organFailingTimer = organFailingTimeInterval - 5;
+
+
 	}
 
 	public void HealOrgan(OrganType organType, FailedOrgan organ){

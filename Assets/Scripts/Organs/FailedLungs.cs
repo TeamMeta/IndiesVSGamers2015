@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FailedLungs : FailedOrgan {
 
 	private float organHealthf = 50;
+
+	public float rhythmSpeed = 3f;
 
 	public override float HandleOrgan ()
 	{
@@ -43,4 +46,20 @@ public class FailedLungs : FailedOrgan {
 		organHealthf = 50.0f;
 	}
 
+	protected override string[] SetAptKeys ()
+	{
+		List<string> keysList = new List<string>();
+		
+		keysList.Add("d");
+		keysList.Add("f");
+		keysList.Add("g");
+		keysList.Add("h");
+        keysList.Add("s");
+
+
+        
+        
+        return keysList.ToArray();
+    }
+    
 }

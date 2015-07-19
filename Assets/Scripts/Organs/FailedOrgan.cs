@@ -7,8 +7,8 @@ public class FailedOrgan {
 
 	//static reference to all the keys that can be used
 	//made this static so we don't have to re-load it repeatedly
-	protected static string[] keys;
-	protected static List<string> alreadyMappedKeys;
+	protected string[] keys;
+	protected List<string> alreadyMappedKeys;
 
 	//the keycode that needs to be pressed to save the organ
 	public KeyCode savingControl;
@@ -85,7 +85,7 @@ public class FailedOrgan {
 	public virtual void OrganFail() {
 		if(keys == null) {
 			alreadyMappedKeys = new List<string>();
-			List<String> keysList = new List<string>();
+
 			/*
 			keysList.AddRange(Enum.GetNames(typeof(KeyCode)));
 			//Removing keys that SHOULDN'T ever be mapped
@@ -118,42 +118,51 @@ public class FailedOrgan {
 
 			//currently adding all the letters manually
 			//see above code for originally 
-			keysList.Add("q");
-			keysList.Add("w");
-			keysList.Add("e");
-			keysList.Add("r");
-			keysList.Add("t");
-			keysList.Add("y");
-			keysList.Add("u");
-			keysList.Add("i");
-			keysList.Add("o");
-			keysList.Add("p");
-			keysList.Add("a");
-			keysList.Add("s");
-			keysList.Add("d");
-			keysList.Add("f");
-			keysList.Add("g");
-			keysList.Add("h");
-			keysList.Add("j");
-			keysList.Add("k");
-			keysList.Add("l");
-			keysList.Add("z");
-			keysList.Add("x");
-			keysList.Add("c");
-			keysList.Add("v");
-			keysList.Add("b");
-			keysList.Add("n");
-			keysList.Add("m");
+
 
 			//copying values into static array
-			keys = keysList.ToArray();
+			keys = SetAptKeys();
 		}
 
 		SelectControl();
 //		Debug.Log(savingControl);
 	}
 
-	protected virtual void SelectControl() {
+	protected virtual string[] SetAptKeys(){
+
+		List<String> keysList = new List<string>();
+		 
+		keysList.Add("q");
+		keysList.Add("w");
+		keysList.Add("e");
+		keysList.Add("r");
+		keysList.Add("t");
+		keysList.Add("y");
+		keysList.Add("u");
+		keysList.Add("i");
+		keysList.Add("o");
+		keysList.Add("p");
+		keysList.Add("a");
+		keysList.Add("s");
+		keysList.Add("d");
+		keysList.Add("f");
+		keysList.Add("g");
+		keysList.Add("h");
+		keysList.Add("j");
+		keysList.Add("k");
+		keysList.Add("l");
+		keysList.Add("z");
+		keysList.Add("x");
+		keysList.Add("c");
+        keysList.Add("v");
+        keysList.Add("b");
+        keysList.Add("n");
+        keysList.Add("m");
+
+		return keysList.ToArray();
+    }
+    
+    protected virtual void SelectControl() {
 		string tempSelectedControl = keys[UnityEngine.Random.Range(0,keys.Length)];
 		//probably not the best way to do this but all i've got right now
 		//trying to make sure we don't "double map" some controls

@@ -61,7 +61,6 @@ public class ScoreManager : MonoBehaviour {
 
 	//Called when an organ is healed
 	public void OnOrganHealed(OrganType type, int scoreIncrement){
-		Debug.Log(type.ToString() +"  " + scoreIncrement);
 
 		calculator.setButtonMashPoint(scoreIncrement);
 	}

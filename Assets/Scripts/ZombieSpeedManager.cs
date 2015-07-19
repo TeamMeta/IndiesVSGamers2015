@@ -22,7 +22,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 	public float baseOrganHealth;
 
 	//Distance factor based on how well organs are handled
-	public float distanceMultiplier;
+	public float distancePerHealth;
 
 	//Zombie move speed
 	public float moveSpeed;
@@ -38,6 +38,9 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 	private Vector2 _dirVector;
 	private Vector2 _finalPosition;
+
+
+	public AnimationCurve multiplierDistanceRelationship;
 
 
 	void Awake(){
@@ -78,14 +81,18 @@ public class ZombieSpeedManager : MonoBehaviour {
 				GameStateManager.Instance.State = GameManager.GameState.Ended;
 			}
 		}
+
+		distancePerHealth = multiplierDistanceRelationship.Evaluate(Scoreboard.Instance.Multiplier);
 	}
 
 
 	//Handle Zombie movements
 	void MoveZombie(){
 
-		_finalPosition = (Vector2)transform.position +  _dirVector * DistanceDeltaAverage();
+		_finalPosition = (Vector2)_initialPosition +  _dirVector * DistanceDeltaAverage() * distancePerHealth ;
 
+
+		Debug.DrawRay(_finalPosition, Vector3.up, Color.green);
 
 		//Clamping final position based oncamp points
 		if(_finalPosition.x < lowerClamp.transform.position.x)
@@ -101,6 +108,11 @@ public class ZombieSpeedManager : MonoBehaviour {
 		
 
 		ZombieStateManager.Instance.Controller.Move(movement.ZeroZ().ZeroY());
+
+
+//		Vector3 movementVector = (Vector3) (_dirVector * DistanceDeltaAverage()).normalized;
+
+
 
 	}
 
@@ -118,13 +130,20 @@ public class ZombieSpeedManager : MonoBehaviour {
 		foreach(KeyValuePair<OrganType, FailedOrgan> _failedOrganEntery in _organs){
 			FailedOrgan _failedOrgan = _failedOrganEntery.Value;
 			if(_failedOrgan.organHealth != baseOrganHealth){
-				totalDelta += (_failedOrgan.organHealth - baseOrganHealth);
+
+
+				if(_failedOrganEntery.Key == OrganType.Heart){
+					totalDelta += (_failedOrgan.organHealth - baseOrganHealth) * 0.5f;
+				}
+				else{
+					totalDelta += (_failedOrgan.organHealth - baseOrganHealth);
+				}
 
 			}
 			organsNames += _failedOrganEntery.Key.ToString()+"   ";
 		}
 //		Debug.Log(organsNames);
-		return totalDelta * distanceMultiplier;
+		return totalDelta * distancePerHealth;
 	}
 
 
