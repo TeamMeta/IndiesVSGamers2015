@@ -40,7 +40,7 @@ public class FinalScoreManager : MonoBehaviour {
         if (distancecovered > 0)
         {
             txtDescription = txtDescription + "Distance Covered: \n";
-            txtVal = txtVal + "x" + distancecovered + " \n";
+            txtVal = txtVal + distancecovered + " \n";
         }
         if (organshealed > 0)
         {
