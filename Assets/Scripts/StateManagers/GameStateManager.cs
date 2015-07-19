@@ -58,9 +58,7 @@ public class GameStateManager : MonoBehaviour {
 	void Awake(){
 		//Lazy Singleton
 		Instance = this;
-
-		//Keep Gameobject persistent across all scenes
-		DontDestroyOnLoad(this.gameObject);
+		
 		// DontDestroyOnLoad(PauseMenuCanvas); 
 
 		//Initialize State Machine
@@ -69,6 +67,10 @@ public class GameStateManager : MonoBehaviour {
 		mainMenu = new SimpleState(MainMenuEnter, MainMenuUpdate, MainMenuExit, "[GAME-STATE] : MAINMENU"); 
 		ended = new SimpleState(EndedEnter, EndedUpdate, EndedExit, "[GAME-STATE] : ENDED"); 
 
+
+	}
+
+	void Start(){
 		//Start the state machine
 		State = GameState.MainMenu;
 	}
@@ -76,6 +78,9 @@ public class GameStateManager : MonoBehaviour {
 	void Update(){
 		_stateMachine.Execute();
 
+		if(LoginUtilities.LoginManager.isLoggedIn()){
+			Debug.Log("I AM LOGGED IN");
+		}
 
 	}
 	#endregion
@@ -132,6 +137,21 @@ public class GameStateManager : MonoBehaviour {
 	void MainMenuEnter(){
 		Time.timeScale = 1; 
 
+		//Enable Mainmenu
+		MainMenuCanvas.SetActive(true);
+
+		//Trigger Animation after delay, animation system triggers bool before cavas is active
+		UnityTimer.Instance.CallAfterDelay(() => {
+
+			MainMenuCanvas.GetComponent<Animator>().SetTrigger("ReloadMenu");
+
+		}, 0.1f);
+
+//		//Disable the finalScoreboard
+//		FinalScoreCanvas.SetActive(false);
+//
+//		ZombieSpeedManager.Instance.ResetZombie();
+
 	}
 	
 	void MainMenuUpdate(){
@@ -161,7 +181,7 @@ public class GameStateManager : MonoBehaviour {
         ScoreCanvas.SetActive(false);
         InGameCanvas.SetActive(false);
         PauseMenuCanvas.SetActive(false);
-        //MainMenuCanvas.SetActive(true);        
+        
     }
 	
 	void EndedUpdate(){
@@ -197,5 +217,10 @@ public class GameStateManager : MonoBehaviour {
 			_stateMachine.SwitchStates(ended);
 			break;
 		}
+	}
+
+	public void RestartGame(){
+		//HACK: Reload
+		Application.LoadLevel(0);
 	}
 }

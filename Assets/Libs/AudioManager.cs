@@ -81,4 +81,8 @@ public class AudioManager : MonoBehaviour {
 			}
 		}
 	}
+
+	public void playSquish(){
+		AudioManager.Instance.playSound("Squish");
+	}
 }

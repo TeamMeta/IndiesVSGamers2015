@@ -149,6 +149,11 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 	}
 
+	public void ResetZombie(){
+		ZombieStateManager.Instance.Controller.enabled = false;
+		transform.position.Set(-3.42f, -0.25f, -3.97f);
+		ZombieStateManager.Instance.Controller.enabled = true;
+	}
 
 
 	void OnEaten(){
