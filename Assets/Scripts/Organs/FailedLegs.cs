@@ -19,7 +19,7 @@ public class FailedLegs : FailedOrgan {
 			buttonPressTimer2 = tempTimer;
 			savingControl = firstKey;
 		}
-		Debug.Log(buttonPressTimer1 + " " + buttonPressTimer2);
+//		Debug.Log(buttonPressTimer1 + " " + buttonPressTimer2);
 		if(buttonPressTimer1 != -1 && buttonPressTimer2 != -1) {
 			if(Mathf.Abs(buttonPressTimer1 - buttonPressTimer2) < 0.2f) {
 				organHealth++;

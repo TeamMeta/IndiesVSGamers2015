@@ -17,7 +17,9 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+
+
 	}
 
 	public void FailOrgan(FailedOrgan fo) {
@@ -33,6 +35,19 @@ public class UIManager : MonoBehaviour {
 		}
 	}
 
+
+	public void HealOrgan(FailedOrgan fo){
+		if(fo.GetType() == typeof(FailedHeart)) {
+			transform.FindChild("FailedHeart").GetComponent<CanvasGroup>().alpha = 0;
+			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
+		} else if (fo.GetType() == typeof(FailedLungs)) {
+			transform.FindChild("FailedLungs").GetComponent<CanvasGroup>().alpha = 0;
+			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
+		} else if (fo.GetType() == typeof(FailedLegs)) {
+			transform.FindChild("FailedLegs").GetComponent<CanvasGroup>().alpha = 0;
+			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
+		}
+	}
 
 
 }

@@ -212,7 +212,11 @@ public class ZombieStateManager : MonoBehaviour {
 		//Temporary Visual Effect to show eating
 		transform.FindChild("zombieSprite").GetComponent<SpriteRenderer>().color = Color.white;
 
-		GameEvents.emitEatenEvent();
+		OrganManager.Instance.ResetOrgans();
+
+//		GameEvents.emitEatenEvent();
+
+
 	}
 	#endregion
 

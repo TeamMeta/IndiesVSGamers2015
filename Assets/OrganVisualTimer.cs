@@ -37,7 +37,7 @@ public class OrganVisualTimer : MonoBehaviour {
 			} else {
 				transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
 				transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.RhythmPercentage());
-				transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = images[((int)(organ.organHealth/(100/images.Length)))];
+				transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = images[((int)(organ.organHealth/(100/images.Length))) - 1];
 			}
 			
 			transform.GetChild(4).GetComponent<Image>().fillAmount = organ.organHealth/100f;

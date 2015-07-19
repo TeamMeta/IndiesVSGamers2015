@@ -34,7 +34,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 
 	//Calibrate how much to move the zombie closer/farther based on how its initially set in the scene.
-	private Vector3 _initialPosition;
+	public Vector3 _initialPosition;
 
 	private Vector2 _dirVector;
 	private Vector2 _finalPosition;
@@ -81,7 +81,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 	//Handle Zombie movements
 	void MoveZombie(){
 
-		_finalPosition = (Vector2)_initialPosition +  _dirVector * DistanceDelta();
+		_finalPosition = (Vector2)transform.position +  _dirVector * DistanceDeltaAverage();
 
 
 		//Clamping final position based oncamp points
@@ -92,6 +92,8 @@ public class ZombieSpeedManager : MonoBehaviour {
 			_finalPosition = ((Vector3)_finalPosition).SetX(upperClamp.transform.position.x);
 
 		Vector3 movement = Utilities.GetPreventOvershootMoveVector(zombie.transform, zombie.transform.position, _finalPosition, moveSpeed);
+
+
 
 		
 
@@ -107,15 +109,42 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 		float totalDelta = 0;
 
+		string organsNames ="FAILED ORGANS: ";
+
 		//Iterate over all failed organs 
 		foreach(KeyValuePair<OrganType, FailedOrgan> _failedOrganEntery in _organs){
 			FailedOrgan _failedOrgan = _failedOrganEntery.Value;
 			if(_failedOrgan.organHealth != baseOrganHealth){
 				totalDelta += (_failedOrgan.organHealth - baseOrganHealth);
+
 			}
+			organsNames += _failedOrganEntery.Key.ToString()+"   ";
+		}
+//		Debug.Log(organsNames);
+		return totalDelta * distanceMultiplier;
+	}
+
+
+	float DistanceDeltaAverage(){
+		float sum = 0;
+
+
+		foreach(KeyValuePair<OrganType, FailedOrgan> _failedOrganEntery in _organs){
+			sum+= _failedOrganEntery.Value.organHealth;
 		}
 
-		return totalDelta * distanceMultiplier;
+		if(_organs.Count != 0)
+		{
+			float avg = sum/_organs.Count;
+			Debug.Log("NEW DISTANCE DELTA: "+(avg - baseOrganHealth));
+			return avg - baseOrganHealth;
+		}
+		else{
+			return 0;
+		}
+
+
+
 	}
 
 

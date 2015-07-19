@@ -119,13 +119,122 @@ public class OrganManager : MonoBehaviour {
 
 		foreach(KeyValuePair<OrganType, FailedOrgan> organEntry in failedOrgans){
 			organEntry.Value.HandleOrgan();
+//
+//			//If any organs health reaches 100 , heal it
+//			if(organEntry.Value.organHealth > 100){
+//				organEntry.Value.organHealth = 100;
+//
+//				UIManager.instance.HealOrgan(organEntry.Value);
+//
+//			}
+//
+//
+			//If any organ dies the game ends
+			if(organEntry.Value.organHealth < 0){
+				organEntry.Value.organHealth = 0;
+				
+				GameStateManager.Instance.State = GameManager.GameState.Ended;
+			}
 		}
+
+		FailedOrgan heart;
+		failedOrgans.TryGetValue(OrganType.Heart, out heart);
+
+		if(heart != null){
+			if(heart.organHealth > 100){
+				heart.organHealth = 100;
+				HealOrgan(OrganType.Heart, heart);
+			}
+		}
+
+		FailedOrgan lungs;
+		failedOrgans.TryGetValue(OrganType.Lungs, out lungs);
+
+
+		if(lungs != null){
+			if(lungs.organHealth > 100){
+				lungs.organHealth = 100;
+				HealOrgan(OrganType.Lungs, lungs);
+			}
+		}
+
+		FailedOrgan legs;
+		failedOrgans.TryGetValue(OrganType.Legs, out legs);
+
+
+		if(legs != null){
+			if(legs.organHealth > 100){
+				legs.organHealth = 100;
+				HealOrgan(OrganType.Legs, legs);
+			}
+		}
+
 	}
 
 	//Reset all organs' state
 	public void ResetOrgans(){
-		foreach(KeyValuePair<OrganType, FailedOrgan> organEntry in failedOrgans){
-			organEntry.Value.organHealth = 50;
-		}
+
+		Debug.Log("HEAL ALL ORGANS");
+
+		FailedOrgan heart;
+		failedOrgans.TryGetValue(OrganType.Heart, out heart);
+
+		if(heart != null)
+			HealOrgan(OrganType.Heart, heart);
+	
+		
+		FailedOrgan lungs;
+		failedOrgans.TryGetValue(OrganType.Lungs, out lungs);
+
+		if(lungs != null)
+			HealOrgan(OrganType.Lungs, lungs);
+
+		
+		FailedOrgan legs;
+		failedOrgans.TryGetValue(OrganType.Legs, out legs);
+
+		if(legs != null)
+			HealOrgan(OrganType.Legs, legs);
+
+
+	}
+
+	public void HealOrgan(OrganType organType, FailedOrgan organ){
+
+		//Update the UI
+		UIManager.instance.HealOrgan(organ);
+
+		//Remove organ from failedOrgan
+		failedOrgans.Remove(organType);
+
+		//reset orgasn health to 50
+		organ.organHealth = 50;
+
+		//Add to organs to fail
+		organsToFail.Add(organType, organ);
+
+
+	}
+
+	public void HealOrganIndividual(OrganType organType, FailedOrgan organ){
+		
+		//Update the UI
+		UIManager.instance.HealOrgan(organ);
+		
+		//Remove organ from failedOrgan
+		failedOrgans.Remove(organType);
+		
+		//reset orgasn health to 50
+		organ.organHealth = 50;
+		
+		//Add to organs to fail
+		organsToFail.Add(organType, organ);
+
+		//Reset Initial position so dela calculations are now wrt to this position
+		ZombieSpeedManager.Instance._initialPosition = transform.position;
+
+
+		
+		
 	}
 }
