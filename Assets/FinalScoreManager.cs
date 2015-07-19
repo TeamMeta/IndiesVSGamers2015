@@ -45,17 +45,17 @@ public class FinalScoreManager : MonoBehaviour {
         if (organshealed > 0)
         {
             txtDescription = txtDescription + "Organ health points: \n";
-            txtVal = txtVal + "x" + organshealed + " \n";
+            txtVal = txtVal + "+" + organshealed + " \n";
         }
         if (humaneaten > 0)
         {
-            txtDescription = txtDescription + "Humans Caught(YUMMY!!!!): \n";
+            txtDescription = txtDescription + "Humans Caught): \n";
             txtVal = txtVal + "x" + humaneaten + " \n";
         }
         if (totscore > 0)
         {
             txtDescription = txtDescription + "Total Score: \n";
-            txtVal = txtVal + "x" + totscore + " \n";
+            txtVal = txtVal  + totscore + " \n";
         }
         scoreText.text = txtDescription;
         scoreVal.text = txtVal;

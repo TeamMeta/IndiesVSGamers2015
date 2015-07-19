@@ -154,7 +154,7 @@ public class GameStateManager : MonoBehaviour {
         FinalScoreCanvas.SetActive(true);
         FinalScoreManager.Instance.Init();
         FinalScoreManager.Instance.SetAll((int)ScoreManager.Instance.calculator.GetFinalScore(), ScoreManager.Instance.calculator.getHumanEaterPoint(),
-            (int)ScoreManager.Instance.calculator.getMilesPoint(), ScoreManager.Instance.calculator.getHumanEaterPoint());
+            (int)ScoreManager.Instance.calculator.getMilesPoint(), ScoreManager.Instance.calculator.getButtonMashPoint());
         ScoreManager.Instance.calculator.UpdateScore();
 
         UIManager.instance.CleanUI();

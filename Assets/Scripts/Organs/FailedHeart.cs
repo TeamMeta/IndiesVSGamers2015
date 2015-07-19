@@ -30,6 +30,11 @@ public class FailedHeart : FailedOrgan {
 					onBeat = true;
 					organHealth += 5;
 					PositiveFeedback.HeartInstance.HeartWellDone();
+
+
+					ScoreManager.Instance.OnOrganHealed(OrganType.Heart, 5);
+
+
 					rhythmTimer = 0;
 					rhythmSpeed = 3f;
 				}

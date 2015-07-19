@@ -23,7 +23,11 @@ public class FailedLegs : FailedOrgan {
 		if(buttonPressTimer1 != -1 && buttonPressTimer2 != -1) {
 			if(Mathf.Abs(buttonPressTimer1 - buttonPressTimer2) < 0.2f) {
 				organHealth++;
+
 				PositiveFeedback.LegInstance.LegsWellDone();
+				ScoreManager.Instance.OnOrganHealed(OrganType.Legs, 1);
+
+
                 onBeat = true;
             } else {
 				organHealth--;

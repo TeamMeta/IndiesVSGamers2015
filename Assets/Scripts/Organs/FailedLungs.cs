@@ -13,6 +13,10 @@ public class FailedLungs : FailedOrgan {
 			if(rhythmTimer < rhythmSpeed) {
 				organHealthf += Time.deltaTime;
 				PositiveFeedback.LungInstance.LungsWellDone();
+
+				//Fire Events
+				ScoreManager.Instance.OnOrganHealed(OrganType.Lungs, 1);
+
                 onBeat = true;
             } else {
 				PositiveFeedback.LungInstance.LungsReset();
