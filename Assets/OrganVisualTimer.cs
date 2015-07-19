@@ -6,6 +6,8 @@ public class OrganVisualTimer : MonoBehaviour {
 
 	public FailedOrgan organ;
 
+	public Sprite[] images;
+
 	//hack-y handling of flashingItems;
 	private float flashTimer;
 
@@ -19,18 +21,26 @@ public class OrganVisualTimer : MonoBehaviour {
 		if(organ != null) {
 			flashTimer += Time.deltaTime;
 
-
-			if(organ.GetType() == typeof(FailedHeart) && !((FailedHeart)organ).onBeat) {
-				transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
-				if((int)(flashTimer*10) % 2 == 0) {
-					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+			if(organ.GetType() == typeof(FailedHeart)) {
+				transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetInteger("Health", 5 - ((int)(organ.organHealth/20)));
+				if(!((FailedHeart)organ).onBeat) {
+					transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
+					if((int)(flashTimer*10) % 2 == 0) {
+						transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+					} else {
+						transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,0);
+					}
 				} else {
-					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,0);
+					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+					transform.GetChild(1).GetComponent<Image>().fillAmount = organ.RhythmPercentage();
 				}
 			} else {
 				transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
 				transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.RhythmPercentage());
+				transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = images[((int)(organ.organHealth/(100/images.Length)))];
 			}
+			
+			transform.GetChild(4).GetComponent<Image>().fillAmount = organ.organHealth/100f;
 
 			if(organ.GetType() == typeof(FailedLegs)) {
 				if((int)(flashTimer*10) % 2 == 0) {
