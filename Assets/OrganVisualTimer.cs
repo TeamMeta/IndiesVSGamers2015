@@ -22,7 +22,6 @@ public class OrganVisualTimer : MonoBehaviour {
 //			Debug.Log("ORGAN UPDATE"+organ.RhythmPercentage());
 //			Debug.Log(flashTimer);
 			if(organ.GetType() == typeof(FailedHeart) && !((FailedHeart)organ).onBeat) {
-				Debug.Log((int)(flashTimer*10));
 				transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
 				if((int)(flashTimer*10) % 2 == 0) {
 					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
