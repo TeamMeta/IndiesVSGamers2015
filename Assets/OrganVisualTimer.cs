@@ -19,8 +19,7 @@ public class OrganVisualTimer : MonoBehaviour {
 		if(organ != null) {
 			flashTimer += Time.deltaTime;
 
-//			Debug.Log("ORGAN UPDATE"+organ.RhythmPercentage());
-//			Debug.Log(flashTimer);
+
 			if(organ.GetType() == typeof(FailedHeart) && !((FailedHeart)organ).onBeat) {
 				transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
 				if((int)(flashTimer*10) % 2 == 0) {
@@ -32,8 +31,14 @@ public class OrganVisualTimer : MonoBehaviour {
 				transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
 				transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.RhythmPercentage());
 			}
-//			
-//			transform.GetChild(2).GetComponent<Image>().color = organ.WithinTimeRange() ? Color.green : Color.red;
+
+			if(organ.GetType() == typeof(FailedLegs)) {
+				if((int)(flashTimer*10) % 2 == 0) {
+					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
+				} else {
+					transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,0);
+				}
+			}
 			transform.GetChild(2).GetComponent<Text>().text = organ.savingControl.ToString();
 			if(organ.WithinTimeRange() && Input.GetKeyDown(organ.savingControl)) {
 				transform.GetChild(2).GetComponent<Text>().color = Color.green;

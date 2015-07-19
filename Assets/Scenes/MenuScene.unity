@@ -162,101 +162,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
---- !u!1001 &81730243
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1962148446}
-    m_Modifications:
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 170
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_Pivot.x
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_Pivot.y
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 148618, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_Name
-      value: FailedOrganUIContainer (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 22544426, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
-  m_IsPrefabParent: 0
---- !u!224 &81730244 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22472716, guid: ca99fe3ee98344c5297334f6dd110fcb,
-    type: 2}
-  m_PrefabInternal: {fileID: 81730243}
 --- !u!1 &106920819
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94c0993e246939b4d92b78a180f71ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  organTimer: {fileID: 0}
   firstOrganFailTime: 3
   secondOrganFailTime: 6
   thirdOrganFailTime: 9
@@ -2683,7 +2587,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 148618, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
       propertyPath: m_Name
-      value: FailedOrganUIContainer (2)
+      value: FailedLegs
       objectReference: {fileID: 0}
     - target: {fileID: 22544426, guid: ca99fe3ee98344c5297334f6dd110fcb, type: 2}
       propertyPath: m_Alpha
@@ -3313,7 +3217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1962148446
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3327,7 +3231,6 @@ RectTransform:
   - {fileID: 1405896384}
   - {fileID: 1596632144}
   - {fileID: 1381304529}
-  - {fileID: 81730244}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}

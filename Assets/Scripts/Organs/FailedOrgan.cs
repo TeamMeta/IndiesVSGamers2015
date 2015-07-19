@@ -7,8 +7,8 @@ public class FailedOrgan {
 
 	//static reference to all the keys that can be used
 	//made this static so we don't have to re-load it repeatedly
-	private static string[] keys;
-	private static List<string> alreadyMappedKeys;
+	protected static string[] keys;
+	protected static List<string> alreadyMappedKeys;
 
 	//the keycode that needs to be pressed to save the organ
 	public KeyCode savingControl;
@@ -150,7 +150,7 @@ public class FailedOrgan {
 //		Debug.Log(savingControl);
 	}
 
-	private void SelectControl() {
+	protected virtual void SelectControl() {
 		string tempSelectedControl = keys[UnityEngine.Random.Range(0,keys.Length)];
 		//probably not the best way to do this but all i've got right now
 		//trying to make sure we don't "double map" some controls

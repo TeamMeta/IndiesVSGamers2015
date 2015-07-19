@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public enum OrganType{
 	Heart = 0,
 	Lungs = 1,
-	Generic = 2, //Placeholder for whatever the last organ is going to be
+	Legs = 2, //Placeholder for whatever the last organ is going to be
 	Length
 }
 
@@ -22,7 +22,6 @@ public class OrganManager : MonoBehaviour {
 	public Dictionary<OrganType, FailedOrgan> organsToFail{get; private set;}
 
 	
-	public GameObject organTimer;
 
 
 	//Organ fail times
@@ -37,9 +36,9 @@ public class OrganManager : MonoBehaviour {
 		organsToFail = new Dictionary<OrganType, FailedOrgan>();
 
 		//Populate Dictionary
-		organsToFail.Add(OrganType.Heart, new FailedHeart());
-		organsToFail.Add(OrganType.Lungs, new FailedLungs());
-		organsToFail.Add(OrganType.Generic, new FailedOrgan());
+		//organsToFail.Add(OrganType.Heart, new FailedHeart());
+		//organsToFail.Add(OrganType.Lungs, new FailedLungs());
+		organsToFail.Add(OrganType.Legs, new FailedLegs());
 	}
 
 

@@ -27,7 +27,7 @@ public class MusicManager : MonoBehaviour {
 			transform.GetChild(1).GetComponent<AudioSource>().volume = Mathf.MoveTowards(transform.GetChild(1).GetComponent<AudioSource>().volume, 0, Time.deltaTime);
 		}
 
-		if(OrganManager.Instance.failedOrgans.ContainsKey(OrganType.Generic)) {
+		if(OrganManager.Instance.failedOrgans.ContainsKey(OrganType.Legs)) {
 			transform.GetChild(2).GetComponent<AudioSource>().volume = Mathf.MoveTowards(transform.GetChild(2).GetComponent<AudioSource>().volume, 1, Time.deltaTime);
 		} else {
 			transform.GetChild(2).GetComponent<AudioSource>().volume = Mathf.MoveTowards(transform.GetChild(2).GetComponent<AudioSource>().volume, 0, Time.deltaTime);
