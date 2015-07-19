@@ -162,10 +162,10 @@ namespace ScoreUtilities
         {
             if(lstScores != null && lstScores.Length > 0)
             {
-                //for (int i = 0; i<lstScores.Length; i++)
-                //{
-                //    Debug.Log((lstScores[i].UserName!=string.Empty? lstScores[i].UserName:lstScores[i].GuestName) + " " + lstScores[i].Text); 
-                //}
+                for (int i = 0; i<lstScores.Length; i++)
+                {
+                    Debug.Log((lstScores[i].UserName!=string.Empty? lstScores[i].UserName:lstScores[i].GuestName) + " " + lstScores[i].Text); 
+                }
                 lstTopScores = lstScores;
             }
             if (LoginManager.isLoggedIn())
@@ -174,7 +174,7 @@ namespace ScoreUtilities
             }
             else
             {
-                PopulateLeaderBoard();
+//                PopulateLeaderBoard();
             }
         }
 
