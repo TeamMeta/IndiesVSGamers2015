@@ -36,6 +36,27 @@ public class OrganVisualTimer : MonoBehaviour {
 //			
 //			transform.GetChild(2).GetComponent<Image>().color = organ.WithinTimeRange() ? Color.green : Color.red;
 			transform.GetChild(2).GetComponent<Text>().text = organ.savingControl.ToString();
+			if(organ.WithinTimeRange() && Input.GetKeyDown(organ.savingControl)) {
+				transform.GetChild(2).GetComponent<Text>().color = Color.green;
+			} else if (organ.WithinTimeRange()) {
+				transform.GetChild(2).GetComponent<Text>().color = Color.red;
+			} else {
+				transform.GetChild(2).GetComponent<Text>().color = Color.white;
+			}
+
+			if(Input.GetKey(organ.savingControl)) {
+				transform.GetChild(0).transform.localScale = new Vector3(-1, 1, 1);
+				transform.GetChild(1).transform.localScale = new Vector3(-1,1,1);
+				transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-10);
+				transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-10);
+				transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-10);
+			} else {
+				transform.GetChild(0).transform.localScale = new Vector3(1, 1, 1);
+				transform.GetChild(1).transform.localScale = new Vector3(1,1,1);
+				transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+				transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+				transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+			}
 		}
 	}
 }
