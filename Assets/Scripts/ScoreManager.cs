@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour {
 
 		if(_isZombieMoving()){
 
-//			calculator.setMilesPoint( distanceSpeed * Time.deltaTime);
+			calculator.setMilesPoint( distanceSpeed * Time.deltaTime);
 
 			Scoreboard.Instance.Score = (int) calculator.CalcVal();
 
