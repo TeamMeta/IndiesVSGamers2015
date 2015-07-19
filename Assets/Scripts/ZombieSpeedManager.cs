@@ -30,6 +30,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 	//Clamping
 	public Transform lowerClamp;
 	public Transform upperClamp;
+	public Transform offscreenLimit;
 
 
 	//Calibrate how much to move the zombie closer/farther based on how its initially set in the scene.
@@ -64,6 +65,15 @@ public class ZombieSpeedManager : MonoBehaviour {
 		if(ZombieStateManager.Instance.State == PlayerState.Running)
 		{
 			MoveZombie();
+
+			//Determine if the zombie is offscreen
+
+			if(transform.position.x < offscreenLimit.position.x){
+
+				//End the Game once you are offscreen
+
+				GameStateManager.Instance.State = GameManager.GameState.Ended;
+			}
 		}
 	}
 
@@ -107,6 +117,8 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 		return totalDelta * distanceMultiplier;
 	}
+
+
 
 	void OnEaten(){
 		OrganManager.Instance.ResetOrgans();

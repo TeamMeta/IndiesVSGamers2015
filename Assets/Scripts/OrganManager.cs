@@ -36,8 +36,8 @@ public class OrganManager : MonoBehaviour {
 		organsToFail = new Dictionary<OrganType, FailedOrgan>();
 
 		//Populate Dictionary
-		//organsToFail.Add(OrganType.Heart, new FailedHeart());
-		//organsToFail.Add(OrganType.Lungs, new FailedLungs());
+		organsToFail.Add(OrganType.Heart, new FailedHeart());
+		organsToFail.Add(OrganType.Lungs, new FailedLungs());
 		organsToFail.Add(OrganType.Legs, new FailedLegs());
 	}
 

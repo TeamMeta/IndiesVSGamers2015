@@ -16,7 +16,6 @@ public class LoopingRoad : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(transform.position.x < length || (goToAnchor != null && goToAnchor.transform.position.x < transform.position.x)) {
-			Debug.Log("HERE");
 			transform.position = new Vector3(anchor != null ? (goToAnchor.transform.position.x - anchor.transform.localPosition.x) : reposition, transform.position.y, transform.position.z);
 		} else {
 			transform.Translate(new Vector3(-3*Time.deltaTime, 0f, 0f));

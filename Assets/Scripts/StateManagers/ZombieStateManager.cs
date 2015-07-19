@@ -178,6 +178,8 @@ public class ZombieStateManager : MonoBehaviour {
 	void EatingExit(){
 		//Temporary Visual Effect to show eating
 		transform.FindChild("zombieSprite").GetComponent<SpriteRenderer>().color = Color.white;
+		//Tell scoring system
+		ScoreManager.Instance.OnHumanCaught();
 
 	}
 	#endregion

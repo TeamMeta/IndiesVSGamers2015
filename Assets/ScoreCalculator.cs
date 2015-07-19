@@ -5,9 +5,10 @@ using System;
 
 namespace ScoreUtilities
 {
-    public class ScoreManager
+    public class ScoreCalculator
     {
         //Table ID
+		
         private enum TableIDs
         {
             MainTable = 82836,
@@ -17,13 +18,13 @@ namespace ScoreUtilities
 
         private int tableID = (int)TableIDs.MainTable; //.TestScoreBoardTable;
         //All weights for score calculation
-        private int pwrWght = 2;
+        private int pwrWght = 1;
         private int normalWght = 1;
-        private int humanWght = 5;
+        private int humanWght = 1;
 
-        private int milesPoint = 0;     //Any moment of time stores the points for the run distance
+        private float milesPoint = 0;     //Any moment of time stores the points for the run distance
         private int buttonMashPoint = 0;    //Any moment of time stores the points for each button mash
-        private int humanEatPoint = 0;      //Any moment of time stores the points for humans caught
+        private int humanEatPoint = 1;      //Any moment of time stores the points for humans caught
         private int comboGenerator = 1;     //Any moment of time stores the last combo generator
 
         //Store score board info for posting
@@ -45,22 +46,23 @@ namespace ScoreUtilities
         public bool currentUserOnly = false;
 
 
-        public void setMilesPoint(int val)
+
+        public void setMilesPoint(float val)
         {
-            if (bTest) { this.milesPoint = PlayerPrefs.GetInt("milesPoint"); }
-            this.milesPoint += val * this.comboGenerator;
-            if (bTest) PlayerPrefs.SetInt("milesPoint",this.milesPoint);
+			if (bTest) { this.milesPoint = PlayerPrefs.GetFloat("milesPoint"); }
+            this.milesPoint += val ;
+            if (bTest) PlayerPrefs.SetFloat("milesPoint",this.milesPoint);
         }
-        public int getMilesPoint()
+        public float getMilesPoint()
         {
-            if (bTest) { this.milesPoint = PlayerPrefs.GetInt("milesPoint"); }
+            if (bTest) { this.milesPoint = PlayerPrefs.GetFloat("milesPoint"); }
             return this.milesPoint;
         }
 
         public void setButtonMashPoint(int val)
         {
             if (bTest) { this.buttonMashPoint = PlayerPrefs.GetInt("buttonMashPoint"); }
-            this.buttonMashPoint += val * this.comboGenerator;
+            this.buttonMashPoint += val ;
             if (bTest) PlayerPrefs.SetInt("buttonMashPoint", this.buttonMashPoint);
         }
         public int getButtonMashPoint()
@@ -72,7 +74,7 @@ namespace ScoreUtilities
         public void setHumanEaterPoint(int val)
         {
             if (bTest) { this.humanEatPoint = PlayerPrefs.GetInt("humanEatPoint"); }
-            this.humanEatPoint += val * this.comboGenerator;
+            this.humanEatPoint += val ;
             if (bTest) PlayerPrefs.SetInt("humanEatPoint", this.humanEatPoint);
         }
         public int getHumanEaterPoint()
@@ -100,17 +102,22 @@ namespace ScoreUtilities
         }
 
         //Function to calculate score 
-        public int CalcVal()
+        public float CalcVal()
         {
-            int retVal = pwrWght * this.getButtonMashPoint() + normalWght * this.getMilesPoint() + humanWght * this.getHumanEaterPoint();
-            if (retVal == 0) retVal = 1;
+            float retVal = (pwrWght * this.getButtonMashPoint() + normalWght * this.getMilesPoint() );
+//            if (retVal == 0) retVal = 1.0f;
             return retVal;
         }
+
+		public float GetFinalScore(){
+			return (pwrWght * this.getButtonMashPoint() + normalWght * this.getMilesPoint() ) * this.getHumanEaterPoint();
+
+		}
 
         //Function to update the score in the GameJolt Leader
         public string UpdateScore()
         {
-            int scoreVal = this.CalcVal();
+            int scoreVal = (int)this.CalcVal();
             string scoreText = scoreVal + " miles";
             string extraData = ""; // This will not be shown on the website. You can store any information.
             Debug.Log("Score: "+scoreVal);
