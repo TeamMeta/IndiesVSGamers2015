@@ -22,7 +22,7 @@ public class OrganVisualTimer : MonoBehaviour {
 			flashTimer += Time.deltaTime;
 
 			if(organ.GetType() == typeof(FailedHeart)) {
-				transform.GetChild(3).GetChild(0).GetComponent<Animator>().SetInteger("Health", 5 - ((int)(organ.organHealth/20)));
+				transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetInteger("Health", 5 - ((int)(organ.organHealth/20)));
 				if(!((FailedHeart)organ).onBeat) {
 					transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
 					if((int)(flashTimer*10) % 2 == 0) {
@@ -37,9 +37,10 @@ public class OrganVisualTimer : MonoBehaviour {
 			} else {
 				transform.GetChild(1).GetComponent<Image>().color = new Color(0,1,0,1);
 				transform.GetChild(1).GetComponent<Image>().fillAmount = (organ.RhythmPercentage());
-				transform.GetChild(3).GetChild(0).GetComponent<Image>().sprite = images[images.Length - ((int)(organ.organHealth/(100/images.Length)))];
+				transform.GetChild(4).GetChild(0).GetComponent<Image>().sprite = images[((int)(organ.organHealth/(100/images.Length)))];
 			}
 			
+			transform.GetChild(4).GetComponent<Image>().fillAmount = organ.organHealth/100f;
 
 			if(organ.GetType() == typeof(FailedLegs)) {
 				if((int)(flashTimer*10) % 2 == 0) {
