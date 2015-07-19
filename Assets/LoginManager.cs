@@ -6,20 +6,27 @@ namespace LoginUtilities
     public class LoginManager : MonoBehaviour
     {
         public static string guestName = "Tester";
+		public GameObject cancelMessage; 
+		public GameObject loginSuccess; 
+		Animator animator;
 
         // Use this for initialization
         void Start()
         {
+			animator = cancelMessage.GetComponent<Animator>();
             GameJolt.UI.Manager.Instance.ShowSignIn((bool success) =>
             {
                 if (success)
                 {
-                    Debug.Log("Yaaaa I can code!!!");
+					loginSuccess.SetActive(true); 
+					animator.SetBool("cancelled", true); 
                 }
                 else
                 {
-                    Debug.Log("Yaaa You can not code!!!");
-                }
+					// cancelMessage; 
+					cancelMessage.SetActive(true);
+					animator.SetBool("cancelled",true);
+				}
             });
         }
 
