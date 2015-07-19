@@ -74,7 +74,6 @@ public class OrganManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(organFailingTimer);
 		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
 			UpdateOrgans();
 			organFailingTimer += Time.deltaTime;

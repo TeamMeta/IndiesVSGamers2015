@@ -173,6 +173,9 @@ public class ZombieStateManager : MonoBehaviour {
 		transform.FindChild("zombieSprite").GetComponent<SpriteRenderer>().color = Color.red;
 		KillHuman.killthehuman = true;
 
+		PlayRandomScream();
+		//Play Audio Effects here
+
 
 	}
 	void EatingUpdate(){}
@@ -251,7 +254,21 @@ public class ZombieStateManager : MonoBehaviour {
 		
 		return (transform.position.y - Floor.Instance.FloorLevel < -0.1);
 	}
-	
+
+
+	void PlayRandomScream(){
+		string[] screams = {"Victoria_Scream", "Arindam_Scream", "Avery_Scream", "Deep_Scream", "Scott_Scream", "Kartik_Scream"};
+
+		string toPlay = screams[Random.Range(0, screams.Length - 1)];
+
+		AudioManager.Instance.playSound(toPlay);
+
+		Debug.Log("PLaying SCREAM"+toPlay);
+
+		UnityTimer.Instance.CallAfterDelay(() => {
+			AudioManager.Instance.playSound("Zombie_Crunch");
+		}, 0.8f);
+	}
 
 
 	#region COLLISION_HANDLERS

@@ -139,7 +139,6 @@ public class ZombieSpeedManager : MonoBehaviour {
 		if(_organs.Count != 0)
 		{
 			float avg = sum/_organs.Count;
-			Debug.Log("NEW DISTANCE DELTA: "+(avg - baseOrganHealth));
 			return avg - baseOrganHealth;
 		}
 		else{
