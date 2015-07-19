@@ -171,6 +171,7 @@ public class ZombieStateManager : MonoBehaviour {
 
 		//Temporary Visual Effect to show eating
 		transform.FindChild("zombieSprite").GetComponent<SpriteRenderer>().color = Color.red;
+		KillHuman.killthehuman = true;
 
 
 	}
