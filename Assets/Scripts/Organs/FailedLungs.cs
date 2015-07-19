@@ -12,12 +12,15 @@ public class FailedLungs : FailedOrgan {
 			rhythmTimer += Time.deltaTime;
 			if(rhythmTimer < rhythmSpeed) {
 				organHealthf += Time.deltaTime;
+				PositiveFeedback.LungInstance.LungsWellDone();
                 onBeat = true;
             } else {
+				PositiveFeedback.LungInstance.LungsReset();
 				organHealthf -= Time.deltaTime;
                 onBeat = false;
             }
 		} else {
+			PositiveFeedback.LungInstance.LungsReset();
 			if(rhythmTimer > 0) {
 				rhythmTimer -= Time.deltaTime;
                 onBeat = false;

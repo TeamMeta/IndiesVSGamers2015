@@ -40,7 +40,7 @@ public class ScoreManager : MonoBehaviour {
 
 //			Debug.Log("SCORE:"+calculator.CalcVal());
 		}
-
+	
 		Scoreboard.Instance.Score = (int) calculator.CalcVal();
 	}
 

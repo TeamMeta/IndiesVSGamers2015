@@ -29,6 +29,7 @@ public class FailedHeart : FailedOrgan {
 				if(rhythmTimer <= rhythmSpeed) {
 					onBeat = true;
 					organHealth += 5;
+					PositiveFeedback.HeartInstance.HeartWellDone();
 					rhythmTimer = 0;
 					rhythmSpeed = 3f;
 				}

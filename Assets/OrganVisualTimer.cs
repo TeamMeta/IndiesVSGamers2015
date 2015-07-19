@@ -57,12 +57,12 @@ public class OrganVisualTimer : MonoBehaviour {
 			} else {
 				transform.GetChild(2).GetComponent<Text>().color = Color.white;
 			}
-            Debug.Log("Here");
-            if (organ.onBeat)
-            {
-                Debug.Log("Peek a boo");
-                transform.GetChild(5).GetComponent<Animator>().SetTrigger("Init");
-            }
+//            Debug.Log("Here");
+//            if (organ.onBeat)
+//            {
+//                Debug.Log("Peek a boo");
+//                transform.GetChild(5).GetComponent<Animator>().SetTrigger("Init");
+//            }
 
             if (Input.GetKey(organ.savingControl)) {
 				transform.GetChild(0).transform.localScale = new Vector3(-1, 1, 1);
