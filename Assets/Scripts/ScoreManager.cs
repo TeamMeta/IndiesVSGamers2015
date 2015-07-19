@@ -10,7 +10,7 @@ public delegate void HealScoreEvent(OrganType type ,int score);
 public class ScoreManager : MonoBehaviour {
 
 	//Deep's Score Calculator
-	private ScoreCalculator calculator;
+	public ScoreCalculator calculator;
 
 	public float distanceSpeed;
 

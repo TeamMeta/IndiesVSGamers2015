@@ -117,7 +117,7 @@ namespace ScoreUtilities
         //Function to update the score in the GameJolt Leader
         public string UpdateScore()
         {
-            int scoreVal = (int)this.CalcVal();
+            int scoreVal = (int)this.GetFinalScore();
             string scoreText = scoreVal + " miles";
             string extraData = ""; // This will not be shown on the website. You can store any information.
             Debug.Log("Score: "+scoreVal);
@@ -125,10 +125,10 @@ namespace ScoreUtilities
             {
                 GameJolt.API.Scores.Add(scoreVal, scoreText, tableID, extraData, addSuccess);
             }
-            else
-            {
-                GameJolt.API.Scores.Add(scoreVal, scoreText, LoginManager.guestName, tableID, extraData, addSuccess);
-            }
+            //else
+            //{
+            //    GameJolt.API.Scores.Add(scoreVal, scoreText, LoginManager.guestName, tableID, extraData, addSuccess);
+            //}
             return scoreText;
         }
 

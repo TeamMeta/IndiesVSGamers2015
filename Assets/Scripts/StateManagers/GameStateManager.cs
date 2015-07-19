@@ -151,8 +151,8 @@ public class GameStateManager : MonoBehaviour {
 		//Idle the Zombie so he doesn't move again
 		ZombieStateManager.Instance.State = PlayerManager.PlayerState.Idle;
 
-		
-	}
+        ScoreManager.Instance.calculator.UpdateScore();
+    }
 	
 	void EndedUpdate(){
 		
