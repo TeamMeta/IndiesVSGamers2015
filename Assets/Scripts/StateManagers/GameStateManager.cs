@@ -107,6 +107,12 @@ public class GameStateManager : MonoBehaviour {
 			MainMenuCanvas.SetActive(false);
 			OrganManager.Instance.Start();
 		}, 1f);
+
+		//Enable Scoreboard
+		UnityTimer.Instance.CallAfterDelay( () => {
+			Scoreboard.Instance.Init();
+		}, 1f);
+
 	}
 
 	void RunningUpdate(){

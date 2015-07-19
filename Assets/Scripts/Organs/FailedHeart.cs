@@ -21,7 +21,7 @@ public class FailedHeart : FailedOrgan {
 				} else {
 					organHealth -= 5;
 					rhythmTimer = 0;
-					Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
+//					Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
 					quality = -1;
 					onBeat = true;
 					rhythmSpeed = 3f;
@@ -32,6 +32,9 @@ public class FailedHeart : FailedOrgan {
 					organHealth += 5;
 					rhythmTimer = 0;
 					rhythmSpeed = 3f;
+
+					//Firing Event
+					ScoreManager.Instance.OnOrganHealed(OrganType.Heart, 10);
 				}
 			}
 		}
@@ -39,7 +42,7 @@ public class FailedHeart : FailedOrgan {
 			if(rhythmTimer > (rhythmSpeed + (acceptableError*2))) {
 				organHealth -= 5;
 				rhythmTimer = 0;
-				Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
+//				Debug.Log("Oh no! You didn't do the thing! Organ health is now: " + organHealth);
 				quality = -1;
 				rhythmSpeed = 3f;
 			}

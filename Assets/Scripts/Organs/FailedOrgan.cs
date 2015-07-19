@@ -47,9 +47,17 @@ public class FailedOrgan {
 		if(Input.GetKeyDown(savingControl)) {
 			if(Mathf.Abs(rhythmTimer - rhythmSpeed) < (acceptableError * 2f)) {
 				organHealth += 5;
+
+				//Firing the event
+				ScoreManager.Instance.OnOrganHealed(OrganType.Generic ,10);
+
 				//if you are super accurate then give extra health back
 				if(Mathf.Abs(rhythmTimer - rhythmSpeed) < acceptableError) {
 					organHealth += 5;
+
+					//Firing the event
+					ScoreManager.Instance.OnOrganHealed(OrganType.Generic, 10);
+
 					Debug.Log("Perfect! Organ health is now: " + organHealth);
 				} else {
 					Debug.Log("Good! Organ health is now: " + organHealth);

@@ -11,6 +11,9 @@ public class FailedLungs : FailedOrgan {
 			if(rhythmTimer < rhythmSpeed) {
 				if(((int)(rhythmTimer*10)) % 20 == 0) {
 					organHealth++;
+
+					//Firing the event
+					ScoreManager.Instance.OnOrganHealed(OrganType.Lungs, 1);
 				}
 			} else {
 				if(((int)(rhythmTimer*10)) % 20 == 0) {
@@ -27,7 +30,7 @@ public class FailedLungs : FailedOrgan {
 			}
 		}
 
-		Debug.Log(organHealth);
+//		Debug.Log(organHealth);
 
 		if(organHealth <= 0) {
 			organHealth = 0;

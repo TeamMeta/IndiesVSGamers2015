@@ -539,7 +539,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 481182}
   - 114: {fileID: 11422090}
-  - 114: {fileID: 11497394}
   m_Layer: 0
   m_Name: GameJoltAPI
   m_TagString: Untagged
@@ -2368,17 +2367,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11497394
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c52c2ee44e4504b8ce5e7811871490, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11498286
 MonoBehaviour:
   m_ObjectHideFlags: 1
