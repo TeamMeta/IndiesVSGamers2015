@@ -11,7 +11,7 @@ public class FailedLungs : FailedOrgan {
 		if(Input.GetKey(savingControl)) {
 			rhythmTimer += Time.deltaTime;
 			if(rhythmTimer < rhythmSpeed) {
-				organHealthf += Time.deltaTime;
+				organHealthf += Time.deltaTime*2f;
 			} else {
 				organHealthf -= Time.deltaTime;
 			}
@@ -24,13 +24,6 @@ public class FailedLungs : FailedOrgan {
 		}
 
 		organHealth = (int)organHealthf;
-
-		if(organHealth <= 0) {
-			organHealth = 0;
-		}
-		if(organHealth >= 100) {
-			organHealth = 100;
-		}
 		return quality;
 	}
 }

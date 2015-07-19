@@ -29,6 +29,9 @@ public class OrganManager : MonoBehaviour {
 	public float secondOrganFailTime;
 	public float thirdOrganFailTime;
 
+	public float organFailingTimeInterval;
+	private float organFailingTimer;
+
 	void Awake(){
 		Instance = this;
 
@@ -44,25 +47,26 @@ public class OrganManager : MonoBehaviour {
 
 	// Use this for initialization
 	public void Start () {
-		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
-			UnityTimer.Instance.CallAfterDelay(() => {
-
-				FailOrgan();
-
-				UnityTimer.Instance.CallAfterDelay(() => {
-
-					FailOrgan();
-
-					UnityTimer.Instance.CallAfterDelay(() => {
-
-						FailOrgan();
-
-					}, thirdOrganFailTime);
-
-				}, secondOrganFailTime);
-
-			}, firstOrganFailTime);
-		}
+		organFailingTimer = organFailingTimeInterval - 5;
+//		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
+//			UnityTimer.Instance.CallAfterDelay(() => {
+//
+//				FailOrgan();
+//
+//				UnityTimer.Instance.CallAfterDelay(() => {
+//
+//					FailOrgan();
+//
+//					UnityTimer.Instance.CallAfterDelay(() => {
+//
+//						FailOrgan();
+//
+//					}, thirdOrganFailTime);
+//
+//				}, secondOrganFailTime);
+//
+//			}, firstOrganFailTime);
+//		}
 	
 	}
 
@@ -70,8 +74,14 @@ public class OrganManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log(organFailingTimer);
 		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
 			UpdateOrgans();
+			organFailingTimer += Time.deltaTime;
+			if(organFailingTimer > organFailingTimeInterval) {
+				FailOrgan();
+				organFailingTimer = 0f;
+			}
 		}
 	}
 
@@ -81,22 +91,23 @@ public class OrganManager : MonoBehaviour {
 	//Fail the organ of said organ type
 	void FailOrgan(){
 		OrganType organTypeToFail = PickRandomOrgan();
+		if(organTypeToFail != OrganType.Length) {
+			//Remove from organstoFail
+			FailedOrgan organToFail;
+			organsToFail.TryGetValue(organTypeToFail,out organToFail);
+			organsToFail.Remove(organTypeToFail);
 
-		//Remove from organstoFail
-		FailedOrgan organToFail;
-		organsToFail.TryGetValue(organTypeToFail,out organToFail);
-		organsToFail.Remove(organTypeToFail);
+			//Fail the organ
+			organToFail.OrganFail();
 
-		//Fail the organ
-		organToFail.OrganFail();
-
-		//Add to failed organs so its handled correctly
-		failedOrgans.Add(organTypeToFail, organToFail);
+			//Add to failed organs so its handled correctly
+			failedOrgans.Add(organTypeToFail, organToFail);
 
 
-		//Show UI
+			//Show UI
 
-		UIManager.instance.FailOrgan(organToFail);
+			UIManager.instance.FailOrgan(organToFail);
+		}
 
 	}
 
@@ -104,6 +115,10 @@ public class OrganManager : MonoBehaviour {
 	//Pick a random organ from whatever is left over
 	OrganType PickRandomOrgan(){
 		int upperLimit = organsToFail.Count - 1;
+
+		if(upperLimit == -1) {
+			return OrganType.Length;
+		}
 
 		int organToPick = Random.Range(0, upperLimit);
 

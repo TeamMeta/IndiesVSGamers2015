@@ -42,10 +42,10 @@ public class UIManager : MonoBehaviour {
 			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
 		} else if (fo.GetType() == typeof(FailedLungs)) {
 			transform.FindChild("FailedLungs").GetComponent<CanvasGroup>().alpha = 0;
-			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
+			transform.FindChild("FailedLungs").GetComponent<OrganVisualTimer>().organ = null;
 		} else if (fo.GetType() == typeof(FailedLegs)) {
 			transform.FindChild("FailedLegs").GetComponent<CanvasGroup>().alpha = 0;
-			transform.FindChild("FailedHeart").GetComponent<OrganVisualTimer>().organ = null;
+			transform.FindChild("FailedLegs").GetComponent<OrganVisualTimer>().organ = null;
 		}
 	}
 
