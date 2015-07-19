@@ -11,16 +11,23 @@ public class FailedLungs : FailedOrgan {
 		if(Input.GetKey(savingControl)) {
 			rhythmTimer += Time.deltaTime;
 			if(rhythmTimer < rhythmSpeed) {
-				organHealthf += Time.deltaTime*2f;
-			} else {
+				organHealthf += Time.deltaTime;
+				PositiveFeedback.LungInstance.LungsWellDone();
+                onBeat = true;
+            } else {
+				PositiveFeedback.LungInstance.LungsReset();
 				organHealthf -= Time.deltaTime;
-			}
+                onBeat = false;
+            }
 		} else {
+			PositiveFeedback.LungInstance.LungsReset();
 			if(rhythmTimer > 0) {
 				rhythmTimer -= Time.deltaTime;
-			} else {
+                onBeat = false;
+            } else {
 				organHealthf -= Time.deltaTime;
-			}
+                onBeat = false;
+            }
 		}
 
 		organHealth = (int)organHealthf;

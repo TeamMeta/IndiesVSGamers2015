@@ -25,7 +25,10 @@ public class FailedOrgan {
 	//starts out at 50 and if increased to 100 can be fixed (suggested gameplay mechanic by Kartik)
 	public int organHealth = 50;
 
-	public float RhythmPercentage() {
+    //Moved here to fix visual cue
+    public bool onBeat = true;
+
+    public float RhythmPercentage() {
 		if(rhythmTimer > 0) {
 			return (rhythmTimer - acceptableError*2f)/rhythmSpeed;
 		} else {

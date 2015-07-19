@@ -70,6 +70,9 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 			if(transform.position.x < offscreenLimit.position.x){
 
+                //Reset zombie state to idle
+                ZombieStateManager.Instance.State = PlayerState.Idle;
+
 				//End the Game once you are offscreen
 
 				GameStateManager.Instance.State = GameManager.GameState.Ended;
