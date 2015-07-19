@@ -66,6 +66,8 @@ public class ScoreManager : MonoBehaviour {
 		Debug.Log("HUMAN CAUGHT");
 
 		calculator.setHumanEaterPoint(1);
+
+		Scoreboard.Instance.Multiplier = calculator.getHumanEaterPoint();
 	}
 
 }

@@ -10,7 +10,8 @@ namespace GameManager{
 	public enum GameState{
 		MainMenu,
 		Paused,
-		Running
+		Running, 
+		Ended
 	}
 
 
@@ -44,7 +45,7 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	public SimpleStateMachine _stateMachine;
-	private SimpleState paused,running, mainMenu;
+	private SimpleState paused,running, mainMenu, ended;
 
 	public GameObject PauseMenuCanvas, MainMenuCanvas, InGameCanvas; 
 
@@ -66,6 +67,7 @@ public class GameStateManager : MonoBehaviour {
 		paused =  new SimpleState(PausedEnter, PausedUpdate, PausedExit, "[GAME-STATE] :  PAUSED");
 		running = new SimpleState(RunningEnter, RunningUpdate, RunningExit, "[GAME-STATE] :  RUNNING");
 		mainMenu = new SimpleState(MainMenuEnter, MainMenuUpdate, MainMenuExit, "[GAME-STATE] : MAINMENU"); 
+		ended = new SimpleState(EndedEnter, EndedUpdate, EndedExit, "[GAME-STATE] : ENDED"); 
 
 		//Start the state machine
 		State = GameState.MainMenu;
@@ -142,6 +144,24 @@ public class GameStateManager : MonoBehaviour {
 	#endregion
 
 
+	#region ENDED_STATE
+	void EndedEnter(){
+		Time.timeScale = 1; 
+
+
+		
+	}
+	
+	void EndedUpdate(){
+		
+	}
+	
+	void EndedExit(){
+		
+	}
+	#endregion
+
+
 	/// <summary>
 	/// Switches Game State 
 	/// </summary>
@@ -160,6 +180,9 @@ public class GameStateManager : MonoBehaviour {
 			break;
 		case GameState.MainMenu:
 			_stateMachine.SwitchStates(mainMenu);
+			break;
+		case GameState.Ended:
+			_stateMachine.SwitchStates(ended);
 			break;
 		}
 	}

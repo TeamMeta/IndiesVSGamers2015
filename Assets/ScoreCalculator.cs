@@ -105,7 +105,7 @@ namespace ScoreUtilities
         public float CalcVal()
         {
             float retVal = (pwrWght * this.getButtonMashPoint() + normalWght * this.getMilesPoint() ) * this.getHumanEaterPoint();
-            if (retVal == 0) retVal = 1.0f;
+//            if (retVal == 0) retVal = 1.0f;
             return retVal;
         }
 
