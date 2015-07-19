@@ -222,7 +222,8 @@ public class OrganManager : MonoBehaviour {
 		failedOrgans.Remove(organType);
 
 		//reset orgasn health to 50
-		organ.organHealth = 50;
+		organ.ResetOrgan();
+
 
 		//Add to organs to fail
 		organsToFail.Add(organType, organ);
@@ -239,7 +240,7 @@ public class OrganManager : MonoBehaviour {
 		failedOrgans.Remove(organType);
 		
 		//reset orgasn health to 50
-		organ.organHealth = 50;
+		organ.ResetOrgan();
 		
 		//Add to organs to fail
 		organsToFail.Add(organType, organ);

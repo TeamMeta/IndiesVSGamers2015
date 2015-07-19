@@ -33,4 +33,10 @@ public class FailedLungs : FailedOrgan {
 		organHealth = (int)organHealthf;
 		return quality;
 	}
+
+	public override void ResetOrgan(){
+		organHealth = 50;
+		organHealthf = 50.0f;
+	}
+
 }

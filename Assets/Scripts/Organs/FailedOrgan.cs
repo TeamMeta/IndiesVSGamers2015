@@ -163,4 +163,8 @@ public class FailedOrgan {
 		alreadyMappedKeys.Add(tempSelectedControl);
 		savingControl = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl, true);
 	}
+
+	public virtual void ResetOrgan(){
+		organHealth = 50;
+	}
 }

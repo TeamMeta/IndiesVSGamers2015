@@ -675,6 +675,27 @@ MonoBehaviour:
   - soundName: Squish
     soundClip: {fileID: 8300000, guid: 38123c24ebf224d73a8d04d6c487c3fc, type: 3}
     lastPlayed: 0
+  - soundName: Victoria_Scream
+    soundClip: {fileID: 8300000, guid: d5a7de8eb9749f0458fe3aa998195a0a, type: 3}
+    lastPlayed: 0
+  - soundName: Arindam_Scream
+    soundClip: {fileID: 8300000, guid: 5024cbab0361ba145bb26b5e508d275a, type: 3}
+    lastPlayed: 0
+  - soundName: Avery_Scream
+    soundClip: {fileID: 8300000, guid: 411f0ad7a56593343aa82ec93e00ffae, type: 3}
+    lastPlayed: 0
+  - soundName: Deep_Scream
+    soundClip: {fileID: 8300000, guid: bcf048b580de93247989abb10b1a4a0e, type: 3}
+    lastPlayed: 0
+  - soundName: Scott_Scream
+    soundClip: {fileID: 8300000, guid: 16d22ad53f4cd9748a253ef9b2ae1298, type: 3}
+    lastPlayed: 0
+  - soundName: Kartik_Scream
+    soundClip: {fileID: 8300000, guid: b55bcff5d063c0b46bb6ffd9eb01fcc4, type: 3}
+    lastPlayed: 0
+  - soundName: Zombie_Crunch
+    soundClip: {fileID: 8300000, guid: a5f810a687ec83d4889763a7aab329ec, type: 3}
+    lastPlayed: 0
 --- !u!4 &106920821
 Transform:
   m_ObjectHideFlags: 0
@@ -682,7 +703,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 106920819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.4248552, y: -1.629704, z: 1.53320122}
+  m_LocalPosition: {x: -12.3400002, y: -1.629704, z: -2.0999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 848461175}
@@ -702,25 +723,25 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 2.91169786
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - time: .00234192028
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     - time: 1
-      value: 0
+      value: 1.00344825
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -4060,7 +4081,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Priority: 128
   DopplerLevel: 1
