@@ -14,7 +14,7 @@ public class LeaderboardPopulator : MonoBehaviour {
 			for(int i=0; i< scores.Length; i++){
 				leaderboard[i].text += "  "+scores[i].UserName+"       "+scores[i].Value;
 			}
-		}, 82836);
+		}, 83423);
 	}
 	
 	// Update is called once per frame

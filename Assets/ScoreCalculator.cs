@@ -16,7 +16,7 @@ namespace ScoreUtilities
             ProductionLeaderBoard = 83423
         }
 
-        private int tableID = (int)TableIDs.MainTable; //.TestScoreBoardTable;
+		private int tableID = (int)TableIDs.ProductionLeaderBoard; //.TestScoreBoardTable;
         //All weights for score calculation
         private int pwrWght = 1;
         private int normalWght = 1;
