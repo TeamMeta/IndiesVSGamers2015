@@ -34,20 +34,22 @@ public class OrganManager : MonoBehaviour {
 
 	void Awake(){
 		Instance = this;
-
 		failedOrgans = new Dictionary<OrganType, FailedOrgan>();
 		organsToFail = new Dictionary<OrganType, FailedOrgan>();
-
 		//Populate Dictionary
 		organsToFail.Add(OrganType.Heart, new FailedHeart());
 		organsToFail.Add(OrganType.Lungs, new FailedLungs());
 		organsToFail.Add(OrganType.Legs, new FailedLegs());
-	}
-
-
-	// Use this for initialization
+        
+    }
+    
+    // Use this for initialization
 	public void Start () {
 		organFailingTimer = organFailingTimeInterval - 5;
+
+
+
+
 //		if(GameStateManager.Instance.State == GameManager.GameState.Running) {
 //			UnityTimer.Instance.CallAfterDelay(() => {
 //

@@ -11,6 +11,8 @@ public class OrganVisualTimer : MonoBehaviour {
 	//hack-y handling of flashingItems;
 	private float flashTimer;
 
+	bool tutorial = true;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -76,6 +78,26 @@ public class OrganVisualTimer : MonoBehaviour {
 				transform.GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
 				transform.GetChild(1).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
 				transform.GetChild(2).GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
+			}
+
+
+			//If organs key is pressed
+			if(Input.GetKeyDown(organ.savingControl)){
+				if(tutorial){
+//					if(organ.GetType() != typeof(FailedLungs))
+//					{
+						transform.GetChild(6).GetComponent<Animator>().SetTrigger("Fade");
+						tutorial = false;
+//					}
+				}
+			}
+
+			if(organ.GetType() == typeof(FailedLegs)){
+				FailedLegs _organ = (FailedLegs) organ;
+				if(Input.GetKey(_organ.firstKey) || Input.GetKey(_organ.otherKey)){
+					transform.GetChild(6).GetComponent<Animator>().SetTrigger("Fade");
+					tutorial = false;
+				}
 			}
 		}
 	}

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class FailedLegs : FailedOrgan {
 
-	private KeyCode firstKey, otherKey;
+	public KeyCode firstKey, otherKey;
 
 	private float tempTimer, buttonPressTimer1, buttonPressTimer2;
 

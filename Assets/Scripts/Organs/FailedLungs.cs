@@ -53,7 +53,6 @@ public class FailedLungs : FailedOrgan {
 		keysList.Add("d");
 		keysList.Add("f");
 		keysList.Add("g");
-		keysList.Add("h");
         keysList.Add("s");
 
 
