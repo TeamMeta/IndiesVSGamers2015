@@ -2,29 +2,29 @@ Initialize engine version: 5.1.2f1 (afd2369b692a)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: Intel(R) HD Graphics 4600 (ID=0x416)
-    Vendor:   Intel
-    VRAM:     896 MB
+    Renderer: NVIDIA GeForce 840M (ID=0x1341)
+    Vendor:   NVIDIA
+    VRAM:     1972 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
-Loading E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.143 seconds
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
+Loading C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
+- Completed reload, in  0.339 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: E:\Development\Unity Projects\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\virtua's_stuff\GameJam - GameJolt\Master\IndiesVSGamers2015\Builds\MrZombie_Data\Managed\System.dll (this message is harmless)
 STATE TRANSITION: --> [GAME-STATE] : MAINMENU
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
@@ -38,4 +38,110 @@ STATE TRANSITION: --> [PLAYER_STATE] : RUNNING
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 26a0 -> priority: 1 
+  Thread -> id: 2d2c -> priority: 1 
+STATE TRANSITION: [GAME-STATE] : MAINMENU --> [GAME-STATE] :  RUNNING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+EHRE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [PLAYER_STATE] : RUNNING --> [PLAYER_STATE] : JUMPING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STICK ZOMBIE TO:(-3.4, 0.0, -4.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [PLAYER_STATE] : JUMPING --> [PLAYER_STATE] : RUNNING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [PLAYER_STATE] : RUNNING --> [PLAYER_STATE] : JUMPING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STICK ZOMBIE TO:(-3.4, 0.0, -4.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [PLAYER_STATE] : JUMPING --> [PLAYER_STATE] : RUNNING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 45
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 40
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 35
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 30
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 25
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 20
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 15
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 10
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Oh no! You didn't do the thing! Organ health is now: -5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [PLAYER_STATE] : RUNNING --> [PLAYER_STATE] : IDLE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Score: 206
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: [GAME-STATE] :  RUNNING --> [GAME-STATE] : ENDED
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.094781 ms
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1759.
+Total: 1.164500 ms (FindLiveObjects: 0.104775 ms CreateObjectMapping: 0.053456 ms MarkObjects: 0.990873 ms  DeleteObjects: 0.014540 ms)
+
+STATE TRANSITION: --> [GAME-STATE] : MAINMENU
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STICK ZOMBIE TO:(-3.4, 0.0, -4.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
+STATE TRANSITION: --> [PLAYER_STATE] : RUNNING
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 65)
+
