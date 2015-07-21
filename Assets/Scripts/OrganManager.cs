@@ -91,6 +91,9 @@ public class OrganManager : MonoBehaviour {
 
 	//Fail the organ of said organ type
 	void FailOrgan(){
+
+		Debug.Log("FAILING AN ORGAN");
+
 		OrganType organTypeToFail = PickRandomOrgan();
 		if(organTypeToFail != OrganType.Length) {
 			//Remove from organstoFail
@@ -115,7 +118,19 @@ public class OrganManager : MonoBehaviour {
 
 	//Pick a random organ from whatever is left over
 	OrganType PickRandomOrgan(){
-		int upperLimit = organsToFail.Count - 1;
+		OrganType[] leftOverOrgans = new OrganType[organsToFail.Count];
+
+		organsToFail.Keys.CopyTo(leftOverOrgans, 0);
+
+		string debugString = "LEFTOVER ORGAS: ";
+
+		foreach(OrganType _type in leftOverOrgans){
+			debugString += _type.ToString()+ "  ";
+		}
+
+		Debug.Log(debugString);
+
+		int upperLimit = leftOverOrgans.Length - 1;
 
 		if(upperLimit == -1) {
 			return OrganType.Length;
@@ -123,11 +138,15 @@ public class OrganManager : MonoBehaviour {
 
 		int organToPick = Random.Range(0, upperLimit);
 
-		OrganType[] leftOverOrgans = new OrganType[organsToFail.Count];
-
-		organsToFail.Keys.CopyTo(leftOverOrgans, 0);
-
+		Debug.Log ("PICKING: INDEX "+organToPick+"  TYPE "+leftOverOrgans[organToPick]);
+//
+//		OrganType[] leftOverOrgans = new OrganType[organsToFail.Count];
+//
+//		organsToFail.Keys.CopyTo(leftOverOrgans, 0);
+//
 		return leftOverOrgans[organToPick];
+
+
 	}
 
 	//Iterate over dictionary to update each organ

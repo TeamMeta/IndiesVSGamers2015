@@ -53,16 +53,16 @@ public class FailedLegs : FailedOrgan {
 
 	protected override void SelectControl ()
 	{
-		int tempRnd = UnityEngine.Random.Range(0,keys.Length-1);
+		int tempRnd = UnityEngine.Random.Range(0,keys.Length-2);
 		string tempSelectedControl = keys[tempRnd];
 		string tempSelectedControl2 = keys[tempRnd+1];
-		while(this.alreadyMappedKeys.Contains(tempSelectedControl) || alreadyMappedKeys.Contains(tempSelectedControl2)) {
-			tempRnd = UnityEngine.Random.Range(0,keys.Length-1);
-			tempSelectedControl = keys[tempRnd];
-			tempSelectedControl2 = keys[tempRnd+1];
-		}
-		this.alreadyMappedKeys.Add(tempSelectedControl);
-		this.alreadyMappedKeys.Add(tempSelectedControl2);
+//		while(this.alreadyMappedKeys.Contains(tempSelectedControl) || alreadyMappedKeys.Contains(tempSelectedControl2)) {
+//			tempRnd = UnityEngine.Random.Range(0,keys.Length-1);
+//			tempSelectedControl = keys[tempRnd];
+//			tempSelectedControl2 = keys[tempRnd+1];
+//		}
+//		this.alreadyMappedKeys.Add(tempSelectedControl);
+//		this.alreadyMappedKeys.Add(tempSelectedControl2);
 		savingControl = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl, true);
 		firstKey = savingControl;
 		otherKey = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl2, true);

@@ -6,7 +6,6 @@ public class FailedLungs : FailedOrgan {
 
 	private float organHealthf = 50;
 
-	public float rhythmSpeed = 3f;
 
 	public override float HandleOrgan ()
 	{

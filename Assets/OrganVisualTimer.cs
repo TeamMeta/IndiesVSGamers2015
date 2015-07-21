@@ -24,7 +24,7 @@ public class OrganVisualTimer : MonoBehaviour {
 			flashTimer += Time.deltaTime;
 
 			if(organ.GetType() == typeof(FailedHeart)) {
-				transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetInteger("Health", 5 - ((int)(organ.organHealth/20)));
+//				transform.GetChild(4).GetChild(0).GetComponent<Animator>().SetInteger("Health", 5 - ((int)(organ.organHealth/20)));
 				if(!((FailedHeart)organ).onBeat) {
 					transform.GetChild(1).GetComponent<Image>().fillAmount = 1;
 					if((int)(flashTimer*10) % 2 == 0) {

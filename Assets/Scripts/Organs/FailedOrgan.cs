@@ -164,12 +164,13 @@ public class FailedOrgan {
     
     protected virtual void SelectControl() {
 		string tempSelectedControl = keys[UnityEngine.Random.Range(0,keys.Length)];
-		//probably not the best way to do this but all i've got right now
-		//trying to make sure we don't "double map" some controls
-		while(alreadyMappedKeys.Contains(tempSelectedControl)) {
-			tempSelectedControl = keys[UnityEngine.Random.Range(0,keys.Length)];
-		}
-		alreadyMappedKeys.Add(tempSelectedControl);
+//		//probably not the best way to do this but all i've got right now
+//		//trying to make sure we don't "double map" some controls
+//		while(alreadyMappedKeys.Contains(tempSelectedControl)) {
+//			tempSelectedControl = keys[UnityEngine.Random.Range(0,keys.Length)];
+//			Debug.Log ("HAVE I FOUND IT?");
+//		}
+//		alreadyMappedKeys.Add(tempSelectedControl);
 		savingControl = (KeyCode)Enum.Parse(typeof(KeyCode), tempSelectedControl, true);
 	}
 
