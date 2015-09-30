@@ -1363,7 +1363,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22498462, guid: 956023f107c5bc84388a9de59cc758ba, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 22498462, guid: 956023f107c5bc84388a9de59cc758ba, type: 2}
       propertyPath: m_AnchoredPosition.x
@@ -1684,6 +1684,10 @@ Prefab:
     - target: {fileID: 11435470, guid: 956023f107c5bc84388a9de59cc758ba, type: 2}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: playSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411814, guid: 956023f107c5bc84388a9de59cc758ba, type: 2}
+      propertyPath: m_FillAmount
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 956023f107c5bc84388a9de59cc758ba, type: 2}
@@ -2203,8 +2207,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448904089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.6700001, y: 1.15999997, z: 0}
-  m_LocalScale: {x: 2.66428709, y: 2.66428638, z: 2.66428638}
+  m_LocalPosition: {x: 17.7099991, y: .910000026, z: 0}
+  m_LocalScale: {x: .769874632, y: .7403934, z: 2.66428638}
   m_Children: []
   m_Father: {fileID: 858480047}
   m_RootOrder: 6
@@ -2233,7 +2237,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d1dd6b20e61e5254bae1dd644d8c2023, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b536f32fb3043bb408ad81462592a1b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &494868524
 GameObject:
@@ -7243,30 +7247,30 @@ MonoBehaviour:
   multiplierDistanceRelationship:
     serializedVersion: 2
     m_Curve:
-    - time: 1
-      value: .805708766
-      inSlope: -.252174437
-      outSlope: -.252174437
+    - time: 1.02909946
+      value: .176136792
+      inSlope: -.0234626196
+      outSlope: -.0234626196
       tangentMode: 10
-    - time: 2.00602555
-      value: .552014828
-      inSlope: -.149428695
-      outSlope: -.149428695
+    - time: 2.08050609
+      value: .151468039
+      inSlope: -.181252226
+      outSlope: -.181252226
       tangentMode: 0
-    - time: 3.84585881
-      value: .293090343
-      inSlope: -.0778599307
-      outSlope: -.0778599307
+    - time: 4.72238731
+      value: .125267744
+      inSlope: -.0672844127
+      outSlope: -.0672844127
       tangentMode: 0
-    - time: 7.10713339
-      value: .130980954
-      inSlope: -.0254764594
-      outSlope: -.0254764594
+    - time: 7.19663668
+      value: .113976166
+      inSlope: -.0222086441
+      outSlope: -.0222086441
       tangentMode: 0
-    - time: 20.031662
-      value: .0489075296
-      inSlope: -.00410917075
-      outSlope: -.00410917075
+    - time: 19.9292622
+      value: .0930394232
+      inSlope: -9.75291883e-08
+      outSlope: -9.75291883e-08
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -7312,8 +7316,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1666576900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.1999998, y: 1.15999997, z: 0}
-  m_LocalScale: {x: 2.66428709, y: 2.66428638, z: 2.66428638}
+  m_LocalPosition: {x: 11.1599998, y: .920000017, z: -0}
+  m_LocalScale: {x: .804742396, y: .763708293, z: 2.66428638}
   m_Children: []
   m_Father: {fileID: 11037899}
   m_RootOrder: 6
@@ -7342,7 +7346,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: d1dd6b20e61e5254bae1dd644d8c2023, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b536f32fb3043bb408ad81462592a1b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1678484163
 GameObject:
@@ -7464,7 +7468,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0

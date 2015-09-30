@@ -270,7 +270,7 @@ public class OrganManager : MonoBehaviour {
 		organsToFail.Add(organType, organ);
 
 		//Reset Initial position so dela calculations are now wrt to this position
-		ZombieSpeedManager.Instance._initialPosition = transform.position;
+		ZombieSpeedManager.Instance._initialPosition = ZombieSpeedManager.Instance.FinalPosition;
 
 
 		
