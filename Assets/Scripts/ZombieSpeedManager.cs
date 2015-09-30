@@ -39,6 +39,12 @@ public class ZombieSpeedManager : MonoBehaviour {
 	private Vector2 _dirVector;
 	private Vector2 _finalPosition;
 
+	public Vector2 FinalPosition{
+		get{
+			return _finalPosition;
+		}
+	}
+
 
 	public AnimationCurve multiplierDistanceRelationship;
 
@@ -93,6 +99,7 @@ public class ZombieSpeedManager : MonoBehaviour {
 
 
 		Debug.DrawRay(_finalPosition, Vector3.up, Color.green);
+		Debug.DrawRay(_initialPosition, Vector3.up, Color.red);
 
 		//Clamping final position based oncamp points
 		if(_finalPosition.x < lowerClamp.transform.position.x)

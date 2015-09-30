@@ -13,21 +13,25 @@ namespace LoginUtilities
         // Use this for initialization
         void Start()
         {
-			animator = cancelMessage.GetComponent<Animator>();
-            GameJolt.UI.Manager.Instance.ShowSignIn((bool success) =>
-            {
-                if (success)
-                {
-					loginSuccess.SetActive(true); 
-					animator.SetBool("cancelled", true); 
-                }
-                else
-                {
-					// cancelMessage; 
-					cancelMessage.SetActive(true);
-					animator.SetBool("cancelled",true);
-				}
-            });
+			if(isLoggedIn())
+			{
+				animator = cancelMessage.GetComponent<Animator>();
+				GameJolt.UI.Manager.Instance.ShowSignIn((bool success) =>
+				                                        {
+					if (success)
+					{
+						loginSuccess.SetActive(true); 
+						animator.SetBool("cancelled", true); 
+					}
+					else
+					{
+						// cancelMessage; 
+						cancelMessage.SetActive(true);
+						animator.SetBool("cancelled",true);
+					}
+				});
+			}
+
         }
 
         // Update is called once per frame
